@@ -14,7 +14,7 @@ import { AutoHubSignUp } from "../../../api/auth/auth";
 import Message from "../../../../components/shared/Message";
 
 
-export default function page() 
+export default function Page() 
 {
    const router = useRouter()
    const advertState = UseStore((state) => state)

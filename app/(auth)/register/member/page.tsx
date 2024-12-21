@@ -8,7 +8,7 @@ import { UseStore } from '../../../../state/store'
 import { Agreement } from './pages/agreement'
 
 
-export default function page() 
+export default function Page() 
 {
       const adverState = UseStore((state) => state)
       const [section, setSection] = useState<number>(adverState.getMemberAgreement())
