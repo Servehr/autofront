@@ -10,7 +10,7 @@ import { BeatLoader } from 'react-spinners'
 import { ForgotPassword } from '../../api/auth/auth'
 
 
-export default function page() 
+export default function Page() 
 {      
       const EMAIL_MESSAGE = 'Enter Email'
     

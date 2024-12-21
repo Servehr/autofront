@@ -8,7 +8,7 @@ import Registration from './pages/registration'
 import { UseStore } from '../../../../state/store'
 
 
-export default function page() 
+export default function Page() 
 {
       const adverState = UseStore((state) => state)
       const [section, setSection] = useState<number>(-1)

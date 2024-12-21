@@ -35,7 +35,7 @@ export default function EditAdvert()
     const { data,  isLoading, completed } = useCreateAd()
     
 
-    const COUNTRY_MESSAGE = 'Select Country'
+    // const COUNTRY_MESSAGE = 'Select Country'
     const STATE_MESSAGE = 'Select State'
     // const MANUFACTURER_MESSAGE = 'Select Manufacturer'
     // const RESET_MANUFACTURER_MESSAGE = 'Reset Manufacture'

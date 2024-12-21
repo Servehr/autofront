@@ -7,7 +7,7 @@ import IAgree from "./pages/iAgree";
 import Maceos from "./pages/maceos";
 
 
-export default function  pages()
+export default function  Pages()
 {
       const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
   

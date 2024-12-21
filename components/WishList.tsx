@@ -58,7 +58,8 @@ export default function WishList({ productId, data, onClick, token, type }: Wish
       
   }
 
-  const customStyle = {
+  const customStyle = 
+  {
     backgroundColor: "red",
     color: "#FFFFFF",
     fontWeight: "bold"

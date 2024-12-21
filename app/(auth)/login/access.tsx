@@ -68,7 +68,8 @@ export default function Access({ showLogo, goTo } : { showLogo: boolean, goTo: s
                      profileDB.add(response?.data)
                      if(response?.data?.user_type === 'admin')
                      {                        
-                        window.location.href = '/dashboard'
+                        // window.location.href = '/dashboard'
+                        window.location.href = goTo
                      } else {
                         window.location.href = goTo
                      }
@@ -217,7 +218,7 @@ export default function Access({ showLogo, goTo } : { showLogo: boolean, goTo: s
                                           <div 
                                                 className='d-flex justify-center text-center text-white'
                                           >
-                                          <div className=''>If you don't have an account </div>
+                                          <div className=''>If you do not have an account </div>
                                           <div className='text-md hover:text-blue-300 font-bold'>
                                                 <Link href={'/register'}>Create one now.</Link>
                                           </div>

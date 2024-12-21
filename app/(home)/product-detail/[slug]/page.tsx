@@ -26,7 +26,7 @@ export default function ProductDetail()
   return (
           <>  
               {
-                  (isLoading === true) && <div className="col-span-12 h-[300px] flex justify-center items-center" style={{ marginTop: '60px', paddingTop: '0px' }}
+                  (isLoading === true) && <div className="col-span-12 h-[300px] flex justify-center items-center" style={{ marginTop: '20px', paddingTop: '0px' }}
                   >
                       <RotateLoader className='w-12 h-12' />
                   </div>

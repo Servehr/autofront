@@ -35,7 +35,7 @@ export const PreLoadingModal = ({onClick, preLoadModal, slug, mode}: PreloadProp
      const GetSelectedProduct = async () => 
      {    
         setIsLoading(true)
-        await delay(2000)
+        await delay(1000)
         const GetUserProductDetail = AdvertWithSpecificData(slug)
         GetUserProductDetail.then((response) => 
         { 
