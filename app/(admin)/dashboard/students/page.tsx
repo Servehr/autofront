@@ -144,6 +144,12 @@ export default function Students()
                             searchPlaceHolder='search for employees ...' 
                             path='students' 
                             from='students' 
+                            onClick={() => {
+                                console.log('')
+                            }}
+                            searchTerm={() => {
+                                console.log('')
+                            }}
                     /> 
                   </div>                       
             </div>
