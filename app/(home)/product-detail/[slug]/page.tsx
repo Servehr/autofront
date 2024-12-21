@@ -297,7 +297,7 @@ export default function ProductDetail()
                                   {
                                       featured?.map((product: any, index: number) => {
                                         return (
-                                          <Featured product={product}  />
+                                          <Featured key={index} product={product}  />
                                         )
                                       })
                                   }

@@ -110,10 +110,11 @@ export default function SlideShowThumbnail({ data, imageSize, waterMark }: { dat
                         className="flex border-2 border-gray-200 mt-2 gap-3 overflow-x-auto py-3 px-2"
                     > 
                         {
-                            data.map((img: { image_url: string   }, index: number) => 
+                            data.map((img: { image_url: string }, index: number) => 
                             {
                                 return (
                                     <img
+                                           key={index}
                                            src={`${USAGE_PATH.PRODUCT_FACE}${img?.image_url}`} 
                                            className="w-[200px] h-[140px] object-fit border-2 border-gray-10"
                                            onClick={() => 

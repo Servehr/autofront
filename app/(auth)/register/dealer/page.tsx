@@ -17,6 +17,11 @@ export default function Page()
       {
          setSection(adverState.getDealerAgreement())  
       }, [])
+
+      useEffect(() => 
+      {
+         setSection(adverState.getDealerAgreement())  
+      }, [adverState])
     
       return (
       <>  

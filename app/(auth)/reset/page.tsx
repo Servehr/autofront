@@ -11,7 +11,7 @@ import { HiHome } from 'react-icons/hi2'
 import { NewPassword } from '../../api/auth/auth'
 
 
-export default function page() 
+export default function Page() 
 {
       const params = useSearchParams()
       const router = useRouter()

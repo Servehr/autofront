@@ -178,7 +178,7 @@ export default function Page()
                                           <div 
                                                 className='d-flex justify-center text-center text-white'
                                           >
-                                          <div className=''>If you don't have an account </div>
+                                          <div className=''>If you do not have an account </div>
                                           <div className='text-md hover:text-blue-300 font-bold'>
                                                 <Link href={'/register'}>Create one now.</Link>
                                           </div>

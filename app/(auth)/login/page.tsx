@@ -4,7 +4,7 @@
 import Access from './access'
 
 
-export default function page() 
+export default function Page() 
 {
       
       return (
