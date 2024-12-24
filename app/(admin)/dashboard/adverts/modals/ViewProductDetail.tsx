@@ -235,7 +235,7 @@ export const ViewProductDetail = ({onClick, openViewProductDetail, product}: Vie
                                     </div> 
                                     { 
                                         data?.data?.images && (data?.data?.images.length > 0) && data?.data?.images.map((img: any, index: number) => {
-                                                let cssStyle = (img.as_advert === 1) ? "col-span-3 md:col-span-3 border border-2 mb-5 relative border border-2 p-3 bg-green-100 border-green-700" : "col-span-3 md:col-span-3 border border-2 mb-5 relative"
+                                                let cssStyle = (Number(img.as_advert) === 1) ? "col-span-3 md:col-span-3 border border-2 mb-5 relative border border-2 p-3 bg-green-100 border-green-700" : "col-span-3 md:col-span-3 border border-2 mb-5 relative"
                                                 return (
                                                         <div className={cssStyle} key={index}>
                                                             <img src={`${USAGE_PATH.PRODUCT_FACE}${img.image_url}`} alt="product images" />

@@ -180,7 +180,7 @@ export default function Trim()
             >
                     <SearchTrim 
                         placeholder={''} 
-                        selectedManufacturer={''} 
+                        selectedTrim={''} 
                         onClick={
                                 (x) => {
                                     setTimeout(
@@ -194,7 +194,7 @@ export default function Trim()
                                     }, 1000)
                                 }
                         } 
-                        models={allModels}
+                        trims={allTrim}
                     />
             </div> 
             <div 

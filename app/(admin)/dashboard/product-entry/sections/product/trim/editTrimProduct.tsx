@@ -45,18 +45,13 @@ export const EditTrimProduct = ({onClick, openTrimProduct, pdata, token}: EditPr
 
         useEffect(() => 
         {
-        }, [modelId])
-
-        useEffect(() => 
-        {
         }, [allModels])
 
         useEffect(() => 
         {
-           setErrMsgStyle('text-md text-white font-bold bg-red-600 rounded-lg py-3 px-5')
-           _Manufacturers()
-           _Models(pdata?.model_id)  
-           console.log(selectedModel, theModelOption)
+            setErrMsgStyle('text-md text-white font-bold bg-red-600 rounded-lg py-3 px-5')
+            _Manufacturers()
+            _Models(pdata?.model_id)  
         }, [])
 
         const _Manufacturers = async () => 
@@ -69,19 +64,11 @@ export const EditTrimProduct = ({onClick, openTrimProduct, pdata, token}: EditPr
         {
             const mods = await modelDB.where("manufacturer_id").equals(x).toArray()
             setAllModels(mods)
-        //     if(x === -1 || x === undefined)
-        //     {
-        //         setAllModels([])
-        //     } else {
-        //         const mods = await modelDB.where("tb_id").equals(x).toArray()
-        //         setAllModels(mods)
-        //     }
         }
         
         const UpdateTriim = () => 
         {
             setIsLoading(true)
-            // return false
             const modelProduct = UpdateTrim(id, manufacturerId, modelId, name, trimRate, token)
             modelProduct.then((response) => 
             {
@@ -117,12 +104,13 @@ export const EditTrimProduct = ({onClick, openTrimProduct, pdata, token}: EditPr
                                 <h1 
                                    className="font-bold text-md uppercase text-blue-600 mb-3"
                                 >
-                                   UPdate Trim
+                                   Update Trim
                                 </h1>
                                 { errorMessage && <Message msg={errorMessage} status={errMsgStyle} />  }
                                 {  
-                                   (allManufactures?.length > 0) &&  
-                                   <>
+                                   (
+                                      allManufactures?.length > 0) &&  
+                                      <>
                                         <div 
                                                 className="w-12/12 mb-4 border border-gray-200"
                                         >

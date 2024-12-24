@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
-// import Message from "../../../../../../../components/shared/Message"
+import Message from "../../../../../../../components/shared/Message"
 import { Modal } from "../../../../../../../components/modal/Modal"
 import { manufacturerDB, modelDB } from "../../../../../../model/Product";
-import Message from "../../../../../../../components/shared/Message";
 import SelectManufacturer from "../model/SelectManufacturer";
 import toast from "react-hot-toast";
 import { AddTrim } from "../../../../../../api/admin/market/product-entry/trim";
@@ -48,7 +47,6 @@ export const AddTrimProduct = ({onClick, openTrimProduct, token}: AddTrrimProduc
         {
            setErrMsgStyle('text-md text-white font-bold bg-red-600 rounded-lg py-3 px-5')
            _Manufacturers()
-           console.log(theModelOption)
         }, [])
 
         const _Manufacturers = async () => 
@@ -71,8 +69,6 @@ export const AddTrimProduct = ({onClick, openTrimProduct, token}: AddTrrimProduc
         const AddTriim = () => 
         {
             setIsLoading(true)
-            console.log({manufacturerId, modelId, name, manufacturerRate, token})
-        //     return false
             const productTrim = AddTrim(manufacturerId, modelId, name, manufacturerRate, token)
             productTrim.then((response: any) => 
             {

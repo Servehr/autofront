@@ -27,6 +27,7 @@ export default function Products()
         {
             queryKey: ['adverts'],
             queryFn: ({ pageParam }) => AllProduct(pageParam),
+            refetchOnMount: true,
             refetchOnWindowFocus: true,
             initialPageParam: currentPage,
             getNextPageParam: (lastPage, allPages) => {
@@ -45,18 +46,18 @@ export default function Products()
 
   return (
         <>
-            {
+            {/* {
                 isLoading && <div className="col-span-12 h-[60px] flex justify-center items-center" style={{ marginTop: '60px', paddingTop: '0px' }}
                 >
                     <RotateLoader className='w-12 h-12' />
                 </div>
-            }
+            } */}
 
             { 
                 data?.data?.pages && 
                 data?.data?.pages.map((products) => products?.map((product: ActiveProduct, index: number) => {
                     return (
-                        <ProductCard key={index} product={product} />
+                        <ProductCard key={index} product={product} refetchs={() => refetch()} />
                     )
                 }))
             }

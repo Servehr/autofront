@@ -24,6 +24,7 @@ const SelectModel = ({ placeholder, selectedModel, models, id, onClick, modelOpt
   useEffect(() => 
   {
      setSelected(selectedModel)
+     console.log(id)
   }, [])
 
   useEffect(() => 
@@ -77,7 +78,7 @@ const SelectModel = ({ placeholder, selectedModel, models, id, onClick, modelOpt
                                 type="text"
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value.toLowerCase())}
-                                placeholder="Enter country name"
+                                placeholder="Enter model name"
                                 className="placeholder:text-gray-200 p-2 outline-none w-full text-sm"
                             />
                         </div>

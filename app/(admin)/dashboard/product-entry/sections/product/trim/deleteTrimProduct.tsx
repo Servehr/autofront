@@ -49,7 +49,7 @@ export const DeleteTrimProduct = ({onClick, openDeleteTrim, data, token}: Delete
               }).then(() => {
       
               })
-           }
+        }
 
      return (
                 <Modal 

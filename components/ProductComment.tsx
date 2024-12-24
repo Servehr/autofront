@@ -187,17 +187,17 @@ export default function ProductComment({ productId, vendorId }: PrdoductCommentP
                           <div 
                               className="flex justify-center items-center gap-3"
                           >                                        
-                              <img src={`${USAGE_PATH.AVATAR}${comments?.['user']['passport']}`} className="rounded-full" width={30} height={30} />
-                              <span className='font-semibold'>{comments?.['user']['firstname']} {comments?.['user']['surname']}</span>
+                              <img src={`${USAGE_PATH.AVATAR}${comments?.['user']['passport']}`} className="rounded-full" width={50} height={50} />
+                              <span className='font-semibold text-[12px] md:text-[16px]'>{comments?.['user']['firstname']} {comments?.['user']['surname']}</span>
                           </div>
                           <div 
-                              className="text-green-600 text-sm"
+                              className="text-green-600 text-[12px] md:text-[16px]"
                           >
                             {comments?.['created_at']} 
                           </div>
                         </div>
                         <div 
-                            className="text-[15px] mt-3"
+                            className="text-[14px] md:text-[16px] mt-3 text-blue-500"
                         >
                             { comments?.comments }
                         </div>

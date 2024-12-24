@@ -40,7 +40,7 @@ export default function Page()
                               className='w-full'
                         >
                               <h3 
-                                    className='flex text-white font-bold justify-center mb-5 uppercase text-lg'
+                                    className='flex text-white font-bold justify-center mb-5 uppercase  text-[14px] md:text-[18px]'
                               >
                                     Signup to start selling and buying
                               </h3>

@@ -87,7 +87,7 @@ export default function Page()
                   className="flex md:d-flex xl:flex-row h-screen bg-[#27973f]"
             >
                   <div 
-                        className="w-full md:w-5/12 mx-auto my-4 d-flex items-center justify-center px-3 py-5 md:p-10 mt-20 gap-5"
+                        className="w-full md:w-5/12 mx-auto my-4 d-flex items-center text-center justify-center px-3 py-5 md:p-10 mt-20 gap-5"
                   >            
                   <div 
                         className='w-full flex justify-center items-center mb-10'
@@ -101,9 +101,9 @@ export default function Page()
                               className='w-full'
                         >
                               <h3 
-                                    className='flex text-white font-bold justify-center mb-5 uppercase'
-                                    >
-                                    Sorry! your can`t access your account, We help you get it back
+                                 className='flex text-white font-bold justify-center mb-5 uppercase  text-[14px] md:text-[18px]'
+                              >
+                                  Sorry! your can`t access your account, We help you get it back
                               </h3>
                         </div>
                         <div  
@@ -113,10 +113,10 @@ export default function Page()
                              { successMsg && <Message msg={successMsg} status={successStyle} />  }
                         </div>
                         <div 
-                              className="w-full p-10 md:px-9 md:pt-10 md:pb-5 d-flex items-center justify-center rounded-md md:rounded-xl bg-[#23913b] hover:text-white mb-20 md:mb-0 border-2 border-green-700"
+                              className="w-full md:p-10 p-3 md:px-9 md:pt-10 md:pb-5 d-flex items-center justify-center rounded-md md:rounded-xl bg-[#23913b] hover:text-white mb-20 md:mb-0 border-2 border-green-700"
                         >
                                     <div  
-                                          className='w-full d-flex gap-10 md:mb-3'
+                                          className='w-full d-flex gap-10 md:mb-3 mt-4'
                                     > 
                                           <div 
                                                 className="mb-4 md:w-full"
@@ -159,12 +159,12 @@ export default function Page()
                                           </button>
                                     </div>
                                     <div  
-                                          className='w-full flex justify-between md:flex gap-10 md:mb-3 mt-10 px-5'
+                                          className='w-full flex justify-between md:flex gap-10 md:mb-3 mt-10 px-5 pb-5'
                                     >                                       
                                           <div 
                                                 className='d-flex justify-center text-center text-white'
                                           >
-                                                <div className=''>Access your account</div>
+                                                <div className='hidden md:block'>Access your account</div>
                                                 <div className='text-md hover:text-blue-300 font-bold'>
                                                       <Link href={'/login'}>Login</Link>
                                                 </div>
@@ -172,13 +172,13 @@ export default function Page()
                                           <div className='text-md text-white hover:text-blue-300 font-bold text-md'>
                                                 <Link href={'/'}
                                                 >                                
-                                                      <div className='mt-1 mr-2 flex justify-center items-center'><HiHome className='mr-1 text-2xl mt-2'/></div>
+                                                      <div className='mt-1 mr-2 flex justify-center items-center'><HiHome className='mr-1 text-2xl md:mt-2'/></div>
                                                 </Link>
                                           </div> 
                                           <div 
                                                 className='d-flex justify-center text-center text-white'
                                           >
-                                          <div className=''>If you do not have an account </div>
+                                          <div className='hidden md:block'>If you do not have an account </div>
                                           <div className='text-md hover:text-blue-300 font-bold'>
                                                 <Link href={'/register'}>Create one now.</Link>
                                           </div>

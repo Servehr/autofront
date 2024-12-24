@@ -66,6 +66,7 @@ export default function SingleImageUpload({width, space, ICloudColour, onClick}:
         photo.style.width = '300px'
         photo.style.height = '300px'
         cloud.style.display = 'none'
+        cloud.style.fontSize = '10px'
         setUploadText("Click to change passport")
         photo.style.backgroundImage = `url(${passportUrl})`
 
@@ -111,7 +112,7 @@ export default function SingleImageUpload({width, space, ICloudColour, onClick}:
                         >
                             <HiCloudUpload className={`w-10 h-10 ${ICloudColour} upload mx-auto`} />
                         </div>
-                        <span className='bg-white p-1 text-black flex text-center justify-center text-sm rounded-full opacity-50 w-full'>{uploadText}</span>
+                        <span className='px-2 text-white flex text-center justify-center text-sm rounded-full w-full whitespace-nowrap text-[9px] md:text-[13px]'>{uploadText}</span>
                     </section>
                     <input type='file' id='passport' name='passport' className='passort p-5 upload' hidden
                             onChange={(e: any) => {                                       

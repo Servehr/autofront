@@ -13,7 +13,7 @@ import { Landing } from '../api/home/market/AllProduct'
 export default function Home() 
 {
 
-    const { isFetching, isLoading, ...data } = useQuery({ queryKey: ['landing-page'], queryFn: () => Landing() })
+    const { isFetching, isLoading, ...data } = useQuery({ queryKey: ['landing-page'], queryFn: () => Landing(), refetchOnMount: true, refetchOnWindowFocus: true } )
     
     
     return (

@@ -28,18 +28,18 @@ export default function Access({ showLogo, goTo } : { showLogo: boolean, goTo: s
       const [errMsgStyle, setErrMsgStyle] = useState<string>('')
       const [errorMessage, setErrorMessage] = useState<string>("")
 
-      const [userIsRegistered, setUserIsRegistered] = useState<string>("")
+      // const [userIsRegistered, setUserIsRegistered] = useState<string>("")
       const [loading, setLoading] = useState<boolean>(false)
       
     
       useEffect(() => 
       {
-         setErrMsgStyle('text-md text-white font-bold bg-red-600 rounded-lg py-3 px-5')
-         setUserIsRegistered(userData.getRegistered())
+         setErrMsgStyle('text-md text-white font-bold bg-red-600 rounded-lg py-2 -mt-1 px-2')
+      //    setUserIsRegistered(userData.getRegistered())
          setTimeout(() => 
          {
             userData.setRegistered("")  
-            setUserIsRegistered("")           
+            // setUserIsRegistered("")           
          }, 10000)
       }, []) 
 
@@ -53,6 +53,7 @@ export default function Access({ showLogo, goTo } : { showLogo: boolean, goTo: s
           const checkFields: string = allFields()
           if(checkFields === 'valid')
           { 
+              userData.setRegistered("") 
               const SignUp = Authenticate(email, password)
               SignUp.then((response) => 
               {
@@ -129,13 +130,13 @@ export default function Access({ showLogo, goTo } : { showLogo: boolean, goTo: s
                               className='w-full'
                         >
                               <h3 
-                                    className='flex text-gray-300 font-bold justify-center mb-5 uppercase'
+                                    className='flex text-gray-100 font-bold justify-center items-center mb-5 text-center uppercase text-[14px] md:text-[18px]'
                                     >
                                     Enter your email address/phone number and password to login.
                               </h3>
                         </div>
                         <div 
-                              className="w-full p-10 md:px-9 md:pt-10 md:pb-5 d-flex items-center justify-center rounded-md md:rounded-xl bg-[#23913b] hover:text-white mb-20 md:mb-0 border-2 border-green-700"
+                              className="w-full md:p-10 p-3 md:px-9 md:pt-10 md:pb-5 d-flex items-center justify-center rounded-md md:rounded-xl bg-[#23913b] hover:text-white mb-20 md:mb-0 border-2 border-green-700"
                         >
                                     <div  
                                           className='w-full d-flex gap-10 md:mb-3'
@@ -144,7 +145,7 @@ export default function Access({ showLogo, goTo } : { showLogo: boolean, goTo: s
                                                 className='w-full d-flex gap-10 mb-3'
                                           > 
                                                 { errorMessage && <Message msg={errorMessage} status={errMsgStyle} />  }
-                                                { userIsRegistered && <Message msg={userIsRegistered} status={''} customStyle='bg-blue-600 text-white font-bold p-5 rounded-lg' />  }
+                                                {/* { userIsRegistered && <Message msg={userIsRegistered} status={''} customStyle='bg-blue-600 text-white font-bold p-5 rounded-lg' />  } */}
                                           </div>
                                           <div 
                                                 className="mb-4 md:w-full"
@@ -213,29 +214,29 @@ export default function Access({ showLogo, goTo } : { showLogo: boolean, goTo: s
                                           </button>
                                     </div>
                                     <div  
-                                          className='w-full flex justify-between md:flex gap-10 md:mb-3 mt-10 px-5'
+                                          className='w-full flex justify-between md:flex gap-10 md:mb-3 mt-10 px-5 mb-10'
                                     >   
                                           <div 
                                                 className='d-flex justify-center text-center text-white'
                                           >
-                                          <div className=''>If you do not have an account </div>
+                                          <div className='hidden md:block'>If you do not have an account </div>
                                           <div className='text-md hover:text-blue-300 font-bold'>
-                                                <Link href={'/register'}>Create one now.</Link>
+                                                <Link href={'/register'} className='text-[13px] md:text-[14px] whitespace-nowrap'>Create one now.</Link>
                                           </div>
                                           </div>  
                                           <div 
                                                 className='text-md text-white hover:text-blue-300 font-bold text-md'>
                                                 <Link href={'/'}
                                                 >                                
-                                                      <div className='mt-1 mr-2 flex justify-center items-center'><HiHome className='mr-1 text-2xl mt-2'/></div>
+                                                      <div className='mt-1 mr-2 flex justify-center items-center'><HiHome className='mr-1 text-2xl md:mt-2'/></div>
                                                 </Link>
                                           </div>                                    
                                           <div 
                                                 className='d-flex justify-center text-center text-white'
                                           >
-                                          <div className=''>I can remember my password again</div>
+                                          <div className='hidden md:block'>I can remember my password again</div>
                                           <div className='text-md hover:text-blue-300 font-bold'>
-                                                <Link href={'/forgot'}>Forgot</Link>
+                                                <Link href={'/forgot'} className='text-[13px] md:text-[14px] whitespace-nowrap'>Forgot Password</Link>
                                           </div>
                                           </div>
                                     </div>

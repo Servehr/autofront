@@ -54,13 +54,13 @@ export default function RightSide()
                       token && <>
                         { (ROLES.includes(userType)) &&
                           <Link href={`/dashboard`} 
-                                className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 ml-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none"
+                                className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 -ml-3 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none"
                           >
                             <span 
                                 className="ml-2 flex justify-center items-center text-[15px]"
                             >
                               <HiWallet 
-                                    className='mr-2 -ml-5 text-green-500 mt-1 cursor-pointer hover:text-blue-600 hover:font-bold'
+                                    className='mr-2 -ml-s5 text-green-500 mt-1 cursor-pointer hover:text-blue-600 hover:font-bold'
                               />
                               Dashboard
                             </span>
@@ -116,6 +116,28 @@ export default function RightSide()
                             />
                                 Create Advert
                           </span>
+                        </Link>                               
+                        <Link 
+                              href={`/user/change-password`} 
+                              className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 ml-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none"
+                        >
+                              <span 
+                                  className="ml-2 flex justify-center items-center text-[15px]"
+                              >
+                                <HiMiniBookmarkSquare className='mr-2 -ml-5 text-green-500 mt-1 cursor-pointer hover:text-blue-600 hover:font-bold' />
+                                  Change Password
+                              </span>
+                        </Link>                              
+                        <Link 
+                              href={`/user/change-passport`} 
+                              className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 ml-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none"
+                        >
+                              <span 
+                                  className="ml-2 flex justify-center items-center text-[15px]"
+                              >
+                                <HiMiniBookmarkSquare className='mr-2 -ml-5 text-green-500 mt-1 cursor-pointer hover:text-blue-600 hover:font-bold' />
+                                  Change Passport
+                              </span>
                         </Link>
                         <Link 
                             href={`#`} 
@@ -166,7 +188,7 @@ export default function RightSide()
                     className="cursor-pointer flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out"
                 >         
                     { !token && <HiOutlineUser className='w-6 h-6 font-bold' /> }
-                    { token && <img src={`${USAGE_PATH.AVATAR}${userState.getPassport()}`} width={50}  className='rounded-full' />  }
+                    { token && <img src={`${USAGE_PATH.AVATAR}${userState.getPassport()}`} className='rounded-full w-[80px] h-[40px]' />  }
                 </div>
                 <div 
                     className="ml-2 "

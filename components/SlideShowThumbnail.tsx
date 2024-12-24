@@ -78,7 +78,7 @@ export default function SlideShowThumbnail({ data, imageSize, waterMark }: { dat
                                             />
                 }
                 <div 
-                    className="absolute p-5 md:hidden w-4/12" style={{marginTop: '-230px', marginLeft: '150px'}} 
+                    className="absolute p-5 md:hidden w-4/12" style={{marginTop: '-180px', marginLeft: '110px'}} 
                 >
                     <img src={`${USAGE_PATH.WATER_MARK}${waterMark}`} width={500} height={500} className="absolute" />
                 </div>

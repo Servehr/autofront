@@ -30,8 +30,6 @@ export const AddStaffModal = ({onClick, openAddMember, departments, roles, token
     useEffect(() => 
     {
        setErrMsgStyle('text-md text-white font-bold bg-red-600 rounded-lg py-3 px-5')
-       setErrorMessage("")
-       console.log({ token })
     }, []) 
 
     const SaveNewSaff = async () => 

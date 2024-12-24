@@ -21,6 +21,7 @@ export default function Page()
 
    const [loading, setLoading] = useState<boolean>(false)
    const [passport, setPassport] = useState<string>("")    
+   const [userIsRegistered, setUserIsRegistered] = useState<string>("")
 
    const [errMsgStyle, setErrMsgStyle] = useState<string>('')
    const [errorMessage, setErrorMessage] = useState<string>("")
@@ -28,7 +29,7 @@ export default function Page()
     
    useEffect(() => 
    {
-      setErrMsgStyle('text-md text-red-600 text-center bg-white rounded-lg p-5 font-bold')
+      setErrMsgStyle('text-sm text-white font-bold bg-red-600 rounded-lg py-2 -mt-1 px-2')
       setErrorMessage("")
       setDom(true)
    }, [])    
@@ -82,8 +83,14 @@ export default function Page()
               advertState.setPassword("")
               advertState.setMemberAgreement(0)
               advertState.setRegistered(response?.message)
-              setLoading(false)
-              router.push(`/login`)
+              setUserIsRegistered(response?.message) 
+              setTimeout(() => 
+                { 
+                  setUserIsRegistered(response?.message) 
+                  setLoading(false)
+                  router.push(`/login`)                  
+                }, 2000
+              )
           } else {
               setErrorMessage(response?.message)
               setLoading(false)
@@ -128,9 +135,10 @@ export default function Page()
                               className="w-full py-10 px-10 md:px-9 md:pt-10 md:pb-5 d-flex items-center justify-center rounded-md md:rounded-xl bg-[#23913b] hover:text-white mb-20 md:mb-0 border-2 border-green-700"
                         >
                                     <div  
-                                          className='w-full d-flex gap-10 md:mb-3'
+                                          className='w-full d-flex gap-10 md:mb-3 justify-center items-center text-center'
                                     > 
                                           { errorMessage && <Message msg={errorMessage} status={errMsgStyle} />  }
+                                          { userIsRegistered && <Message msg={userIsRegistered} status={''} customStyle='bg-blue-600 text-white font-bold p-5 rounded-lg' />  }
                                     </div>
                                     <div  
                                           className='w-full d-flex gap-10 md:mb-3'

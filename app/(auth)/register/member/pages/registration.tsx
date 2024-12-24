@@ -55,7 +55,7 @@ export default function Registration({ onClick }: RegistrationProp)
 
   useEffect(() => 
   {
-     setErrMsgStyle('text-md text-white font-bold bg-red-600 rounded-lg py-3 px-5')
+     setErrMsgStyle('text-sm text-white font-bold bg-red-600 rounded-lg py-2 -mt-1 px-2')
      setErrorMessage("")
      setNothing(false)
      setDom(true)
@@ -113,7 +113,7 @@ export default function Registration({ onClick }: RegistrationProp)
                 { 
                     dom &&
                     <div 
-                        className="w-full p-10 md:px-9 md:pt-10 md:pb-5 d-flex items-center justify-center rounded-md md:rounded-xl bg-[#23913b] hover:text-white mb-20 md:mb-0 border-2 border-green-700"
+                        className="w-full p-4 md:px-9 md:pt-10 md:pb-5 pb-14 d-flex items-center justify-center rounded-md md:rounded-xl bg-[#23913b] hover:text-white mb-20 md:mb-0 border-2 border-green-700"
                     >
                         <section 
                             className="mb-4 w-full"
@@ -287,12 +287,12 @@ export default function Registration({ onClick }: RegistrationProp)
                         </section>
                         
                         { (errorMessage) && <Message msg={errorMessage} status={errMsgStyle} /> }
-                
+                                        
                         <section  
                             className='w-full flex justify-between items-center md:flex gap-10 md:mb-3 mt-20 md:mt-14 px-5'
                         >   
                             <HiArrowSmLeft 
-                                    className='w-11 h-11 bg-green-100 cursor-pointer rounded-full text-black hover:text-green-600 p-1'
+                                    className='w-9 h-9 md:w-11 md:h-11 bg-green-100 cursor-pointer rounded-full text-black hover:text-green-600 p-1'
                                     onClick={() => 
                                     { 
                                         advertState.setMemberAgreement(0)

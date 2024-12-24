@@ -43,7 +43,8 @@ export default function Follow({ vendorId, user }: FollowProps)
 
             })
         } else {
-            setMsg("You have to be logged in to follow")
+            // setMsg("You have to be logged in to follow")
+            setMsg("Login to follow")
             setLoading(false)
             setTimeout(() => {
                 setMsg("")
@@ -72,7 +73,7 @@ export default function Follow({ vendorId, user }: FollowProps)
                     { !isLoadingComment && (data > 0) ? <Flw count={data} /> : <UnFlw count={data} /> }
                  </button>
               }
-              { msg && <span className='p-2 bg-red-600 text-white text-red-500 w-full flex justify-center rounded px-10'>{ msg } </span> }
+              { msg && <span className='p-2 bg-red-600 text-white text-red-500 w-full flex justify-center items-center whitespace-nowrap rounded px-3'>{ msg } </span> }
             </div>
         </>
   )

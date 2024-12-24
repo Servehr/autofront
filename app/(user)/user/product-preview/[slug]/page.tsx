@@ -76,34 +76,34 @@ export default function ProductPreview()
                                   </div>
                                 </div>  
                                 <div 
-                                            className="font-bold text-[30px] text-gray-500 mt-5"
-                                          >
-                                            {data?.['title']}
-                                          </div>
-                                          <div 
-                                            className="font-bold text-sm mt-1 flex justify-between items-center"
-                                          >
-                                            <span className="text-blue-600">Date: {data?.['created_at']}</span>
-                                            <span 
-                                                className="text-blue-500 text-sm flex justify-center items-center"
-                                            >
-                                              <p className="text-black mr-3">Comments: </p><p className='font-bold text-lg'>{data?.['comments_count']}</p>
-                                            </span>
-                                            <span 
-                                                className="text-blue-500 text-sm flex justify-center items-center"
-                                            >
-                                              <p className="text-black mr-3">Views: </p><p className='font-bold text-lg text-red-500'>{data?.['views']}</p>
-                                            </span>
-                                          </div>
-                                          <div 
-                                              className="font-bold text-md text-gray-500 mt-5 border-shadow"
-                                          >
-                                            <SlideShowThumbnail data={data?.['images']} imageSize={data?.['images']} waterMark={data?.['watermark']} />
-                                           </div> 
+                                    className="font-bold text-[23px] md:text-[30px] text-gray-500 mt-5 mb-2"
+                                >
+                                   {data?.['title']}
+                                </div>
+                                <div 
+                                  className="font-bold text-sm mt-1 flex justify-between items-center"
+                                >
+                                  <span className="text-blue-600 text-[12px] md:text-[14px]">{data?.['created_at']}</span>
+                                  <span 
+                                    className="text-blue-500 text-[12px] md:text-[14px] flex justify-center items-center"
+                                  >
+                                    <p className="text-black mr-3">Comments: </p><p className='font-bold text-[14px] md:text-[16px]'>{data?.['comments_count']}</p>
+                                  </span>
+                                  <span 
+                                    className="text-blue-500 text-[12px] md:text-[14px] flex justify-center items-center"
+                                  >
+                                    <p className="text-black mr-3">Views: </p><p className='font-bold text-[14px] md:text-[16px] text-red-500'>{data?.['views']}</p>
+                                  </span>
+                                </div>
+                                <div 
+                                    className="font-bold text-md text-gray-500 mt-5 border-shadow"
+                                >
+                                   <SlideShowThumbnail data={data?.['images']} imageSize={data?.['images']} waterMark={data?.['watermark']} />
+                                </div> 
                                 <div className="h-[60px]"></div>                                          
                           </div>
                           <div 
-                              className="md:col-span-4 col-span-12 md:px-1 -mt-10 md:mt-0"
+                              className="md:col-span-4 col-span-12 md:px-1 -mt-20 md:mt-0"
                           >
                           <div 
                               className="px-2 my-4 flex-col flex gap-2 "

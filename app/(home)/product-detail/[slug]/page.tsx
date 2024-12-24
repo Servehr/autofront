@@ -26,7 +26,7 @@ export default function ProductDetail()
   return (
           <>  
               {
-                  (isLoading === true) && <div className="col-span-12 h-[300px] flex justify-center items-center" style={{ marginTop: '20px', paddingTop: '0px' }}
+                  (isLoading === true) && <div className="col-span-12 h-[750px] flex justify-center items-center" style={{ marginTop: '20px', paddingTop: '0px' }}
                   >
                       <RotateLoader className='w-12 h-12' />
                   </div>
@@ -95,20 +95,25 @@ export default function ProductDetail()
                                   </div>
                               </div>
                               <div 
-                                className="font-bold text-[30px] text-gray-500 mt-5"
-                              >
-                                {data?.['title']}
-                              </div>
-                              <div 
-                                className="font-bold text-sm mt-1 flex justify-between items-center"
-                              >
-                                <span className="text-blue-600">Date: {data?.['created_at']}</span>
-                                <span 
-                                    className="text-blue-500 text-sm flex justify-center items-center"
+                                    className="font-bold text-[23px] md:text-[30px] text-gray-500 mt-5 mb-2"
                                 >
-                                  <p className="text-black mr-3">Views: </p><p className='font-bold text-lg text-red-500'>{data?.['views']}</p>
-                                </span>
-                              </div>
+                                   {data?.['title']}
+                                </div>
+                                <div 
+                                  className="font-bold text-sm mt-1 flex justify-between items-center"
+                                >
+                                  <span className="text-blue-600 text-[12px] md:text-[14px]">{data?.['created_at']}</span>
+                                  <span 
+                                    className="text-blue-500 text-[12px] md:text-[14px] flex justify-center items-center"
+                                  >
+                                    <p className="text-black mr-3">Comments: </p><p className='font-bold text-[14px] md:text-[16px]'>{data?.['comments_count']}</p>
+                                  </span>
+                                  <span 
+                                    className="text-blue-500 text-[12px] md:text-[14px] flex justify-center items-center"
+                                  >
+                                    <p className="text-black mr-3">Views: </p><p className='font-bold text-[14px] md:text-[16px] text-red-500'>{data?.['views']}</p>
+                                  </span>
+                                </div>
                               <div 
                                 className="font-bold text-md mt-7 flex justify-between items-center"
                               >
@@ -117,11 +122,10 @@ export default function ProductDetail()
                                 >
                                   <img src={`${USAGE_PATH.AVATAR}${data?.['user']['passport']}`} className="rounded-full" width={70} height={70} />
                                 </span>                                
-                                <Follow vendorId={`${data?.['user_id']}`} user={data?.['user_id']!} />
                                 <span 
                                     className="text-blue-500 text-sm flex justify-center items-center"
                                 >
-                                  <p className="text-black mr-3">Comments: </p><p className='font-bold text-lg'>{data?.['comments_count']}</p>
+                                    <Follow vendorId={`${data?.['user_id']}`} user={data?.['user_id']!} />
                                 </span>
                               </div>
                               <div 
