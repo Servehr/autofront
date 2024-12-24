@@ -91,7 +91,7 @@ export default function Category()
                     !isLoading && data?.data?.pages && 
                     data?.data?.pages.map((products) => products?.map((product: ActiveProduct, index: number) => {
                         return (
-                            <ProductCard key={index} product={product} />
+                            <ProductCard key={index} product={product} refetchs={() => { refetch() }} />
                         )
                     }))
                 }
