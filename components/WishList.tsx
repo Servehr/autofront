@@ -20,7 +20,7 @@ type WishListProps =
 
 export default function WishList({ productId, data, onClick, token, type }: WishListProps) 
 {
-  let result = data?.filter((product) => product?.product_id === productId)
+  let result = data?.filter((product) => Number(product?.product_id) === Number(productId))
   let isWishList = (result?.length > 0) ? "yes" : "no"
 
   const AddToWishList = () => 
