@@ -1,17 +1,16 @@
 "use client"
 
-import { useParams, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import DOMPurify from "dompurify"
 import { HiArrowLeft, HiHome } from "react-icons/hi2"
 import { RotateLoader } from "react-spinners"
 import SlideShowThumbnail from "../../../../../components/SlideShowThumbnail"
 import currencyFormatter from "../../../../../components/util/currency-formatter"
-import { ProductDetailProps, useProductDetail } from "../../../../hook/queries/useProductDetail"
+import { useProductDetail } from "../../../../hook/queries/useProductDetail"
 
 
-export default function ProductPreview() 
-{  
-  const params = useParams<ProductDetailProps>()  
+export default function ProductPreview({ params } : { params : { slug: string } }) 
+{   
   const router = useRouter()
   const { data, isLoading, completed } = useProductDetail(params?.slug)
 

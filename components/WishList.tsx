@@ -21,7 +21,7 @@ type WishListProps =
 export default function WishList({ productId, data, onClick, token, type }: WishListProps) 
 {
   let result = data?.filter((product) => product?.product_id === productId)
-  let isWishList = (result?.length > 0) ? true : false
+  let isWishList = (result?.length > 0) ? "yes" : "no"
 
   const AddToWishList = () => 
   {
@@ -84,7 +84,7 @@ export default function WishList({ productId, data, onClick, token, type }: Wish
             }
             {
                data && (data?.length > 0) && <div 
-                      className={`${(isWishList ? 'bg-green-600 border-2 border-green-100' : ' bg-blue-300 border-2 border-blue-100')} text-pink-500 z-4 hover:text-pink-600 p-1 md:p-2 rounded-full absolute top-2 right-2 md:top-5 md:right-5 hover:bg-green-800`}
+                      className={`${((isWishList === "yes") ? 'bg-green-600 border-2 border-green-100' : ' bg-blue-300 border-2 border-blue-100')} text-pink-500 z-4 hover:text-pink-600 p-1 md:p-2 rounded-full absolute top-2 right-2 md:top-5 md:right-5 hover:bg-green-800`}
                       onClick={() => {
                         AddToWishList()
                       }}

@@ -23,28 +23,35 @@ export const ViewProductDetail = ({onClick, openViewProductDetail, product}: Vie
 
     const { data, isLoading, refetch, isRefetching } = useQuery({ queryKey: [`get-all-product`, product?.tb_id, token], queryFn: () => GetProductDetail(product?.tb_id, token)})
   
-    const placeAdvert = (imageId: number) => 
+    const placeAdvert = (imageId: number, status: string) => 
     {
-        const Place = PlaceAsAdvert(Number(imageId), Number(product?.tb_id), token)
-        Place.then((response) => 
+        if(status === 'active')
         {
-            if(response?.status === 200)
+            const Place = PlaceAsAdvert(Number(imageId), Number(product?.tb_id), token)
+            Place.then((response) => 
             {
-                toast.success(response?.message, {
-                  position: "top-center",
-                });
-                refetch()
-                // alert(response?.message)
-            } else {
-                toast.success(response?.message, {
-                  position: "top-center",
-                });
-                refetch()
-                // alert("Advert could not be placed")
-            }
-        }).catch(() => {
-
-        })
+                if(response?.status === 200)
+                {
+                    toast.success(response?.message, {
+                      position: "top-center",
+                    });
+                    refetch()
+                    // alert(response?.message)
+                } else {
+                    toast.success(response?.message, {
+                      position: "top-center",
+                    });
+                    refetch()
+                    // alert("Advert could not be placed")
+                }
+            }).catch(() => {
+    
+            })
+        } else {
+            toast.error(`You can not place as an advert, product is ${status}`, {
+              position: "top-center",
+            });
+        }
     }
 
     return (
@@ -241,7 +248,7 @@ export const ViewProductDetail = ({onClick, openViewProductDetail, product}: Vie
                                                             <img src={`${USAGE_PATH.PRODUCT_FACE}${img.image_url}`} alt="product images" />
                                                                 <button 
                                                                     onClick={() => {
-                                                                        placeAdvert(img?.id)
+                                                                        placeAdvert(img?.id, data?.data?.status)
                                                                     }} 
                                                                     className='hover:bg-green-800 rounded-full text-sm p-3 px-5 bg-blue-700 text-white font-bold absolute bottom-11 right-11'>
                                                                     place as advert - {img.as_advert}

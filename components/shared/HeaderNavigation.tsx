@@ -17,6 +17,7 @@ import { HiMiniPower } from 'react-icons/hi2';
 import { UseStore } from '../../state/store';
 import ProfilePicture from '../../app/(user)/user/adverts/control/profile-picture';
 import { Logout } from '../Logout';
+import SmallScreen from './SmallScreen';
 
 
 // const marketPlate = 
@@ -244,6 +245,12 @@ export default function HeaderNavigation()
                     <RightSide />
                     <PostAdvert />
                 </nav>
+             
+              
+                <div className='w-full md:hidden pb-2 mb-2'
+                >        
+                    <SmallScreen />
+                </div>
 
 
                 </div> 

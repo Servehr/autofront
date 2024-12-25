@@ -1,9 +1,9 @@
 "use client"
 
-import { useParams, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import DOMPurify from "dompurify"
 import { HiArrowLeft, HiHome, HiMiniPhoneArrowUpRight } from "react-icons/hi2"
-import { ProductDetailProps, useProductDetail } from "../../../hook/queries/useProductDetail"
+import { useProductDetail } from "../../../hook/queries/useProductDetail"
 import { RotateLoader } from "react-spinners"
 import Image from 'next/image'
 import { USAGE_PATH } from "../../../../constant/Path"
@@ -17,9 +17,8 @@ import Follow from "../../../../components/Follow"
 import ProductComment from "../../../../components/ProductComment"
 
 
-export default function ProductDetail() 
-{  
-  const params = useParams<ProductDetailProps>()  
+export default function ProductDetail({ params } : { params : { slug: string } }) 
+{   
   const router = useRouter()
   const { data, isLoading, completed, category, featured } = useProductDetail(params?.slug)
 

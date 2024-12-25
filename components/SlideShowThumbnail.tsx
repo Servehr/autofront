@@ -92,12 +92,12 @@ export default function SlideShowThumbnail({ data, imageSize, waterMark }: { dat
              {
                 (data?.length > 1) && <>
                     <div 
-                        className="absolute top-[40%] -translate-x-0 translate-y-[-50%] z-5 left-5 text-xl rounded-full cursor-pointer bg-green-100 p-1"
+                        className="absolute top-[23%] md:top-[35%] -translate-x-0 translate-y-[-3%] z-5 left-5 text-xl rounded-full cursor-pointer bg-green-100 p-1 mt-1 md:-mt-5"
                     > 
                         <BsArrowLeftCircleFill color="gray" className="arrow arrow-left w-9 h-9 text-white hover:bg-green-700 hover:fill-red" style={{ backgroundColor: "" }} onClick={prevSlide} />
                     </div>
                     <div 
-                        className="absolute top-[40%] -translate-x-0 translate-y-[-50%] right-5 text-xl rounded-full cursor-pointer bg-green-100 p-1"
+                        className="absolute top-[29%] md:top-[35%] -translate-x-0 translate-y-[-50%] right-5 text-xl rounded-full cursor-pointer bg-green-100 p-1"
                     >
                        <BsArrowRightCircleFill color="gray" className="arrow arrow-right w-9 h-9 text-white" style={{ backgroundColor: "" }} onClick={nextSlide} />
                     </div>

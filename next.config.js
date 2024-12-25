@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // output: "export",
   reactStrictMode: false,
   env: {
     URL: 'https://www.scentsbyhoppey.com/',
@@ -11,3 +12,4 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+

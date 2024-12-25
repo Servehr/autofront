@@ -1,7 +1,7 @@
 "use client"
 
 import { useInfiniteQuery } from "@tanstack/react-query"
-import { useRouter, useParams } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
 import { useInView } from "react-intersection-observer"
 import { RotateLoader } from "react-spinners"
@@ -10,9 +10,8 @@ import { HiArrowLeft, HiHome } from "react-icons/hi2"
 import { CategoryProduct } from "../../../api/home/market/AllProduct"
 
 
-export default function Category() 
+export default function Category({ params } : { params : { slug: string } }) 
 {
-  const params = useParams<{ x: string }>()
   const router = useRouter()
 
   const { ref, inView } = useInView()
@@ -30,8 +29,8 @@ export default function Category()
       isLoading,
       ...data
     } = useInfiniteQuery({
-      queryKey: [`cagegory-${params?.x}`],
-      queryFn: ({ pageParam }) => CategoryProduct(pageParam, params?.x),
+      queryKey: [`cagegory-${params?.slug}`],
+      queryFn: ({ pageParam }) => CategoryProduct(pageParam, params?.slug),
       initialPageParam: currentPage,
       getNextPageParam: (lastPage, allPages) => {
           const nextPage = lastPage.length ? (allPages.length + 1) : undefined 
