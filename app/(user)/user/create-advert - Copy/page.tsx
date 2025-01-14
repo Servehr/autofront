@@ -124,7 +124,6 @@ export default function CreateAdvert()
     const [advertImages, setAdvertImages] = useState<string[]>([])
   
     const [value] = useState(advertState.getDescription())
-    const [type, setType] = useState("x")
 
     const [errorMessage, setErrorMessage] = useState<string>("")
 
@@ -152,18 +151,12 @@ export default function CreateAdvert()
 
     useEffect(() => 
     {
-
-    }, [type])
-
-    useEffect(() => 
-    {
         console.log({ theTrimId, theEngineId, yearMessage, theCountry, theCategoryOption, category, theManufacturer, theDescription, theModelId, theManufacturerName, theModelName, theTrimName, theTrimNameMessage, theEngineName})
     }, [theState, stateId])
 
     const SaveAdvert = async (option: string) => 
     {
         setLoading(true)
-        setType(option)
         const checkFields: string = allFields()
         if(checkFields === 'valid')
         {
@@ -901,7 +894,7 @@ export default function CreateAdvert()
                         { (errorMessage) && <Message msg={errorMessage} status={errMsgStyle} /> }              
 
                         <div 
-                            className="w-full d-flex md:flex mb-3 mt-14 hidden md:block"
+                            className="w-full d-flex md:flex mb-3 mt-14"
                         >
                             <div 
                                 className="w-2/2 mb-5 md:mb-0"
@@ -956,29 +949,6 @@ export default function CreateAdvert()
                                 }
                             </div>
                             </div>
-                        </div>
-
-                        <div 
-                            className="w-full flex mb-3 mt-14 justify-between md:hidden"
-                        >
-                            <div 
-                                className="text-white font-bold bg-green-800 hover:bg-blue-700 py-3 px-4 block whitespace-no-wrap cursor-pointer w-fit rounded-lg"
-                                    onClick={() => {
-                                      SaveAdvert('no')
-                                    }}    
-                            >
-                                { loading && (type === 'no') ? <BeatLoader size={10} color="white" className="py-2" /> : "Save"} 
-                            </div>
-                            <div 
-                                className="text-white font-bold bg-blue-800 hover:bg-green-700 py-3 px-4 w-[150px] block whitespace-no-wrap cursor-pointer w-fit rounded-lg"
-                                    onClick={() => {
-                                        SaveAdvert('yes')
-                                    }}  
-                            >
-                                { loading && (type === 'yes') ? <BeatLoader size={10} color="white" className="py-2" /> : "Save As Draft"}
-                            </div>
-                            
-                            
                         </div>
 
                 </div>
