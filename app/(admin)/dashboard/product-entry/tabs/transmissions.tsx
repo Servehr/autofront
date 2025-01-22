@@ -1,6 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table'
 import React, { useEffect, useMemo, useState } from 'react'
-import student from '../../../../../components/shared/data/student.json'
 import { AddTransmissionProduct } from '../sections/transmission/addTransmissionProduct'
 import { EditTranmissionProduct } from '../sections/transmission/editTranmissionProduct'
 import { DeleteTransmissionProduct } from '../sections/transmission/deleteTransmissionProduct'
@@ -12,6 +11,7 @@ import { UseStore } from '../../../../../state/store'
 import { useQuery } from '@tanstack/react-query'
 import { GetTransmission } from '../../../../api/admin/market/transmission'
 import { PuffLoader } from 'react-spinners'
+
 
 export default function Transmissions()
 {

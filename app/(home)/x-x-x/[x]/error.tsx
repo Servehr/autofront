@@ -4,11 +4,9 @@ import { useEffect } from 'react'
 import { PuffLoader } from 'react-spinners'
  
 export default function Error({
-  error,
-  reset,
+  error
 }: {
   error: Error & { digest?: string }
-  reset: () => void
 }) {
   useEffect(() => {
     console.error(error)

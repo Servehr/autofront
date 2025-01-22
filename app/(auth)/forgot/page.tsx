@@ -169,7 +169,9 @@ export default function Page()
                                                       <Link href={'/login'}>Login</Link>
                                                 </div>
                                           </div>  
-                                          <div className='text-md text-white hover:text-blue-300 font-bold text-md'>
+                                          <div 
+                                            className='text-md text-white hover:text-blue-300 font-bold text-md cursor-pointer'
+                                          >
                                                 <Link href={'/'}
                                                 >                                
                                                       <div className='mt-1 mr-2 flex justify-center items-center'><HiHome className='mr-1 text-2xl md:mt-2'/></div>
@@ -179,9 +181,9 @@ export default function Page()
                                                 className='d-flex justify-center text-center text-white'
                                           >
                                           <div className='hidden md:block'>If you do not have an account </div>
-                                          <div className='text-md hover:text-blue-300 font-bold'>
-                                                <Link href={'/register'}>Create one now.</Link>
-                                          </div>
+                                                <div className='text-md hover:text-blue-300 font-bold'>
+                                                      <Link href={'/register'}>Create one now.</Link>
+                                                </div>
                                           </div>
                                     </div>
                         </div>

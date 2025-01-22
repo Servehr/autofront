@@ -32,7 +32,7 @@ export default function WishList({ productId, data, onClick, token, type }: Wish
             position: "bottom-center",
             style: customStyle
         },
-       );
+       );       
     } else {
         const AddToWishList = UserWishList(productId, token, type)
         AddToWishList.then((response) => 

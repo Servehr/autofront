@@ -23,7 +23,7 @@ export default function WishListProduct()
     const usertype: string = userToken.getUType()
 
     const [currentPage, setCurrentPage] = useState(1)  
-    const [perPage] = useState(20) 
+    const [perPage] = useState(10) 
 
     const { data, isLoading, refetch, isRefetching } = useQuery({ queryKey: [`wishlist-products-${currentPage}-${perPage}`, currentPage, perPage, token], queryFn: () => WishListProducts(Number(currentPage), Number(perPage), token, usertype)})
     
@@ -52,7 +52,7 @@ export default function WishListProduct()
                             </div>
                 }
                   
-                {  !isLoading && (data?.data?.product_advert?.product.length === 0) && <>
+                {  !isLoading && (data?.data?.product_advert?.noOfPages === 0) && <>
                         <div 
                             className="flex md:d-flex xl:flex-row h-[400px] justify-center items-center mt-20"
                         >
@@ -73,7 +73,7 @@ export default function WishListProduct()
                     </>
                 }
                   
-                {  !isLoading && (data?.data?.product_advert?.product.length > 0) && <>
+                {  !isLoading && (data?.data?.product_advert?.noOfPages > 0) && <>
                         <div 
                             className="container px-2 mr-3 border-2 border-gray-200 flex justify-between items-center mb-5"
                         >
@@ -91,7 +91,7 @@ export default function WishListProduct()
                     className="grid grid-cols-12 gap-5 rounded-md mb-5 gap-2 md:mx-0 mr-2"
                 >
                 {
-                  !isLoading && (data?.data?.product_advert?.product.length > 0) && data?.data?.product_advert?.product.map((product: any, index: number) => 
+                  !isLoading && (data?.data?.product_advert?.noOfPages > 0) && data?.data?.product_advert?.product.map((product: any, index: number) => 
                             {
                                 return (
                                     <>
@@ -159,7 +159,7 @@ export default function WishListProduct()
                         }
                 </div>
                 
-                {  !isLoading && (data?.data?.product_advert?.product.length > 0) && <>
+                {  !isLoading && (data?.data?.product_advert?.noOfPages > 0) && <>
                         <div 
                             className="container px-2 mr-3 border-2 border-gray-200 flex justify-between items-center mb-5"
                         >
@@ -175,7 +175,7 @@ export default function WishListProduct()
 
             <div className="mt-14">
                 { 
-                    !isLoading && isRefetching && (data?.data?.product_advert?.product.length > 0) && 
+                    !isLoading && isRefetching && (data?.data?.product_advert?.noOfPages > 0) && 
                             <Pagination onClick={(data) => {
                                       setCurrentPage(data)
                                       setTimeout(() => {
@@ -194,7 +194,7 @@ export default function WishListProduct()
 
             <div className="mt-14">
                 { 
-                    !isLoading && !isRefetching && (data?.data?.product_advert?.product.length > 0) && 
+                    !isLoading && !isRefetching && (data?.data?.product_advert?.noOfPages > 0) && 
                             <Pagination onClick={(data) => {
                                       setCurrentPage(data)
                                       setTimeout(() => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { USAGE_PATH } from '../constant/Path'
-import { RotateLoader, ScaleLoader } from 'react-spinners'
+import { PuffLoader, ScaleLoader } from 'react-spinners'
 import { Comments, ProductCommentProps, ProductComments } from '../app/api/home/market/advert/Comments'
 import Message from './shared/Message'
 import { useQuery } from '@tanstack/react-query'
@@ -30,8 +30,8 @@ export default function ProductComment({ productId, vendorId }: PrdoductCommentP
 
   const [successMsgStyle, setSuccessMsgStyle] = useState<string>('')
   const [successMessage, setSuccessMessage] = useState<string>("")
- 
-    
+
+      
   useEffect(() => 
   {
      setErrMsgStyle('text-md text-red-600 font-bold')
@@ -48,7 +48,6 @@ export default function ProductComment({ productId, vendorId }: PrdoductCommentP
 
   const SendMessage = async () => 
   {
-      setIsLoading(true)
       const data: ProductCommentProps = 
       {
         product_id: productId,
@@ -69,12 +68,14 @@ export default function ProductComment({ productId, vendorId }: PrdoductCommentP
           {
               if(response?.status === 200)
               {
-                  setSuccessMsgStyle("Successfully posted")
-                  setSuccessMessage("Comment successfully posted")
-                  setIsLoading(false)
-                  setComment("")
-                  refetch()
-                  setTimeout(() => {
+                setSuccessMsgStyle("Successfully posted")
+                setSuccessMessage("Comment successfully posted")
+                setIsLoading(false)
+                setComment("")
+                refetch()
+                setTimeout(
+                  () => 
+                  {
                     setSuccessMessage("")
                   }, 5000)
               }
@@ -122,6 +123,7 @@ export default function ProductComment({ productId, vendorId }: PrdoductCommentP
                 }
                 { token &&
                   <textarea  
+                      id='CommentOnProduct'
                       defaultValue={comment}
                       className="inside w-full border rounded-md p-3 bg-white bg-opacity-75 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out" 
                       placeholder="Enter Message." 
@@ -130,6 +132,7 @@ export default function ProductComment({ productId, vendorId }: PrdoductCommentP
                       {
                         setComment(e.target.value)
                       }}
+                      value={comment}
                   >
                   </textarea>
                 }
@@ -149,14 +152,14 @@ export default function ProductComment({ productId, vendorId }: PrdoductCommentP
                 isLoadingComment  &&  <div 
                                 className="flex md:d-flex xl:flex-row h-[30px] justify-center items-center"
                             >
-                                { isLoadingComment && <RotateLoader className='w-12 h-12' color="white" /> }
+                                { isLoadingComment && <PuffLoader className='w-12 h-12' color="white" /> }
                             </div>
             }
             {
                 isLoadingComment  &&  <div 
                                 className="flex md:d-flex xl:flex-row h-[30px] justify-center items-center"
                             >
-                                { isLoadingComment && <RotateLoader className='w-12 h-12' color="white" /> }
+                                { isLoadingComment && <PuffLoader className='w-12 h-12' color="white" /> }
                             </div>
             }
             {

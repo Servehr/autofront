@@ -23,7 +23,7 @@ export default function Settings()
     const userToken = UseStore((state) => state)
     const token: string = userToken.getUserToken()
 
-    const { data, isLoading, refetch, isRefetching } = useQuery({ queryKey: [`get-all-departments`, token], queryFn: () => ControlSettings(token)})
+    const { data, isLoading, refetch, isRefetching } = useQuery({ queryKey: [`get-settings`, token], queryFn: () => ControlSettings(token)})
       
 
     return (
@@ -60,7 +60,7 @@ export default function Settings()
                               <div 
                                     className="mb-4 md:w-full d-flex md:flex gap-5"
                               >
-                                    <AuthControl option={data?.data?.auth} token={token} />
+                                    <AuthControl option={data?.data?.auth} token={token} onClick={() => { refetch() }} />
                                     <PlanControl option={data?.data?.plan} />
                               </div>
                               
@@ -100,8 +100,8 @@ export default function Settings()
                               <div 
                                     className="mb-4 md:w-full d-flex md:flex gap-5"
                               >
-                                    <PostComment option={data?.data?.blog_comment} />
-                                    <BlogComment option={data?.data?.post_comment} />
+                                    <PostComment option={data?.data?.blog_comment} token={token} onClick={() => { refetch() }} />
+                                    <BlogComment option={data?.data?.post_comment} token={token} onClick={() => { refetch() }} />
                               </div>
 
                         </div>

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import DOMPurify from "dompurify"
 import { HiArrowLeft, HiHome, HiMiniPhoneArrowUpRight } from "react-icons/hi2"
 import { useProductDetail } from "../../../hook/queries/useProductDetail"
-import { RotateLoader } from "react-spinners"
+import { PuffLoader } from "react-spinners"
 import Image from 'next/image'
 import { USAGE_PATH } from "../../../../constant/Path"
 import currencyFormatter from "../../../../components/util/currency-formatter"
@@ -27,13 +27,13 @@ export default function ProductDetail({ params } : { params : { slug: string } }
               {
                   (isLoading === true) && <div className="col-span-12 h-[750px] flex justify-center items-center" style={{ marginTop: '20px', paddingTop: '0px' }}
                   >
-                      <RotateLoader className='w-12 h-12' />
+                      <PuffLoader className='w-12 h-12' />
                   </div>
               }              
               {/* {
                   ((isLoading === false) && ((completed === "no") || (completed === ""))) && <div className="col-span-12 h-[300px] flex justify-center items-center" style={{ marginTop: '60px', paddingTop: '0px' }}
                   >
-                      <RotateLoader className='w-12 h-12' />
+                      <PuffLoader className='w-12 h-12' />
                   </div>
               }   */}
               {/* {

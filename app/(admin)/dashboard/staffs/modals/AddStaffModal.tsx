@@ -25,7 +25,7 @@ export const AddStaffModal = ({onClick, openAddMember, departments, roles, token
     const [theRole, setRole] = useState<number>(-1)
     const [theDepartment, setDepartment] = useState<number>(-1)
     const [errMsgStyle, setErrMsgStyle] = useState<string>('')
-    const [errorMessage, setErrorMessage] = useState<string>("")
+    const [errorMessage] = useState<string>("")
 
     useEffect(() => 
     {

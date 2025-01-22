@@ -4,7 +4,7 @@ import { useInfiniteQuery } from "@tanstack/react-query"
 import { useRouter, useParams } from "next/navigation"
 import { useState, useEffect } from "react"
 import { useInView } from "react-intersection-observer"
-import { RotateLoader } from "react-spinners"
+import { PuffLoader } from "react-spinners"
 import ProductCard from "../../../../components/ProductCard"
 import { HiArrowLeft, HiHome } from "react-icons/hi2"
 import { CategoryProduct } from "../../../api/home/market/AllProduct"
@@ -75,7 +75,7 @@ export default function Category()
             {
                 isLoading && <div className="col-span-12 h-[1400px] flex justify-center items-center" style={{ marginTop: '60px', paddingTop: '0px' }}
                 >
-                    <RotateLoader className='w-12 h-12' />
+                    <PuffLoader className='w-12 h-12' />
                 </div>
             }  
             {
@@ -101,7 +101,7 @@ export default function Category()
                 !isLoading && (data?.data?.pages[0].length > 0) &&
                 <div ref={ref} className="col-span-12 h-[70px] flex justify-center items-center" style={{ marginTop: '60px', marginBottom: '100px', paddingTop: '0px' }}
                 >
-                    { isFetchingNextPage && hasNextPage && <RotateLoader className='w-12 h-12' />  }
+                    { isFetchingNextPage && hasNextPage && <PuffLoader className='w-12 h-12' />  }
                     { !isFetchingNextPage && !isFetching && "No more product"  }
                     
                 </div>

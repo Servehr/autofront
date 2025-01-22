@@ -26,8 +26,6 @@ export const ChangeStaffDepartmentModal = ({onClick, openAddMember, departments,
     useEffect(() => 
     {
        setErrMsgStyle('text-md text-white font-bold bg-red-600 rounded-lg py-3 px-5')
-       setErrorMessage("")
-       console.log({ token })
     }, []) 
 
     const SaveNewSaff = async () => 
@@ -38,6 +36,7 @@ export const ChangeStaffDepartmentModal = ({onClick, openAddMember, departments,
         {
             if(response?.status === 200)
             {
+                setErrorMessage("")
                 onClick()
             } else {
                 toast.error(response?.message, {

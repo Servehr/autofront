@@ -177,6 +177,7 @@ export default function CreateAdvert()
                 images: advertImages,
                 draft: option
             }
+            console.log(data)
             
             let endPoint = `${userType}/create`
             let ApiUrl = `${BASE_URL}${endPoint}`
@@ -195,7 +196,7 @@ export default function CreateAdvert()
                         router.push('/user/adverts')
                     } else {
                         setLoading(false)
-                        setErrorMessage(ERROR_MESSAGE)
+                        setErrorMessage(response?.data?.message)
                         setTimeout(() => 
                         {
                             setErrorMessage("")
@@ -264,41 +265,44 @@ export default function CreateAdvert()
     const allFields = () => 
     {
         let validity: string = 'valid'
-        if(advertState.getCountry() === -1){ setCountryMessage(COUNTRY_MESSAGE); validity = 'invalid' }
-        if(advertState.getStates() === -1){ setStateMessage(STATE_MESSAGE); validity = 'invalid' }
-        if(advertState.getCategory() === -1){ setCategoryMessage(CATEGORY_MESSAGE); validity = 'invalid' }
+        if(advertState.getCountry() === -1){ setCountryMessage(COUNTRY_MESSAGE); validity = 'invalid'; console.log("1") }
+        if(advertState.getStates() === -1){ setStateMessage(STATE_MESSAGE); validity = 'invalid'; console.log("2")  }
+        if(advertState.getCategory() === -1){ setCategoryMessage(CATEGORY_MESSAGE); validity = 'invalid'; console.log("3")  }
         if(advertState.getOthers() === "no")
         {
-            if(advertState.getManufacturer() === -1){ setManufacturerMessage(MANUFACTURER_MESSAGE); validity = 'invalid' }
-            if(advertState.getModel() === -1){ setModelMessage(MODEL_MESSAGE); validity = 'invalid' }
+            if(advertState.getManufacturer() === -1){ setManufacturerMessage(MANUFACTURER_MESSAGE); validity = 'invalid'; console.log("4")  }
+            if(advertState.getModel() === -1){ setModelMessage(MODEL_MESSAGE); validity = 'invalid'; console.log("5")  }
             // if(advertState.getTrim() === -1){ setTrimMessage(TRIM_MESSAGE); validity = 'invalid' }
             // if(advertState.getEngine() === -1){ setEngineMessage(ENGINE_MESSAGE); validity = 'invalid' }
         } else {
-            if(advertState.getTheManufacturerName() === ""){ setTheManufacturerNameMessage(MANUFACTURER_NAME_MESSAGE); validity = 'invalid' }
-            if(advertState.getTheModelName() === -1){ setTheModelNameMessage(MODEL_NAME_MESSAGE); validity = 'invalid' }
-            if(advertState.getTheTrimName() === -1){ setTheTrimNameMessage(TRIM_NAME_MESSAGE); validity = 'invalid' }
-            if(advertState.getTheEngineName() === -1){ setTheEngineNameMessage(ENGINE_NAME_MESSAGE); validity = 'invalid' }            
+            if(advertState.getTheManufacturerName() === ""){ setTheManufacturerNameMessage(MANUFACTURER_NAME_MESSAGE); validity = 'invalid'; console.log("6")  }
+            if(advertState.getTheModelName() === -1){ setTheModelNameMessage(MODEL_NAME_MESSAGE); validity = 'invalid'; console.log("7")  }
+            if(advertState.getTheTrimName() === -1){ setTheTrimNameMessage(TRIM_NAME_MESSAGE); validity = 'invalid'; console.log("8")  }
+            if(advertState.getTheEngineName() === -1){ setTheEngineNameMessage(ENGINE_NAME_MESSAGE); validity = 'invalid'; console.log("9")  }            
         }
 
-        if(advertState.getFuel() === -1){ setFuelMessage(FUEL_MESSAGE); validity = 'invalid' }
-        if(advertState.getYear() === "x"){ setYearMessage("Select Year"); validity = 'invalid' }
-        if(advertState.getColour() === -1){ setColourMessage(COLOUR_MESSAGE); validity = 'invalid' }
-        if(advertState.getTransmission() === -1){ setTransmissionMessage(TRANSMISSION_MESSAGE); validity = 'invalid' }
-        if(advertState.getCondition() === -1){ setConditionMessage(CONDITION_MESSAGE); validity = 'invalid' }
+        if(advertState.getFuel() === -1){ setFuelMessage(FUEL_MESSAGE); validity = 'invalid'; console.log("10")  }
+        if(advertState.getYear() === "x"){ setYearMessage("Select Year"); validity = 'invalid'; console.log("11")  }
+        if(advertState.getColour() === -1){ setColourMessage(COLOUR_MESSAGE); validity = 'invalid'; console.log("12")  }
+        if(advertState.getTransmission() === -1){ setTransmissionMessage(TRANSMISSION_MESSAGE); validity = 'invalid'; console.log("13")  }
+        if(advertState.getCondition() === -1){ setConditionMessage(CONDITION_MESSAGE); validity = 'invalid'; console.log("14")  }
         // if(advertState.getMileage() === ""){ setMileageMessage(MILEAGE_MESSAGE); validity = 'invalid' }
-        if(advertState.getLocation() === ""){ setLocationMessage(LOCATION_MESSAGE); validity = 'invalid' }
+        if(advertState.getLocation() === ""){ setLocationMessage(LOCATION_MESSAGE); validity = 'invalid'; console.log("15")  }
         // if(advertState.getChasisNo() === ""){ setChasisNoMessage(MILEAGE_MESSAGE); validity = 'invalid' }
-        if(advertState.getPrice() === ""){ setPriceMessage(PRICE_MESSAGE); validity = 'invalid' }
-        if(advertState.getDescription() === ""){ setDescriptionErrorMsg(DESCRIPTION_MESSAGE); validity = 'invalid' }
+        if(advertState.getPrice() === ""){ setPriceMessage(PRICE_MESSAGE); validity = 'invalid'; console.log("16")  }
+        if(advertState.getDescription() === ""){ setDescriptionErrorMsg(DESCRIPTION_MESSAGE); validity = 'invalid'; console.log("17")  }
         if(advertImages.length < 5)
         { 
-            setImagePositionMessage('Upload at least 5 images'); validity = 'invalid' 
+            setImagePositionMessage('Upload at least 5 images'); validity = 'invalid'; console.log("18")  
         } else if(advertImages.length > 15){
             setImagePositionMessage("You can`t upload more than 15 images")
+            validity = 'invalid'
+            console.log("19") 
         } else {            
             if(Number(advertState.getImagePosition()) === -1)
             { 
                 setImagePositionMessage(IMAGE_POSITION_MESSAGE); validity = 'invalid' 
+                console.log("20") 
             }
         }
         return validity
@@ -339,23 +343,30 @@ export default function CreateAdvert()
                                 className="w-2/2 md:w-1/2 mb-5 md:mb-0"
                             >
                                 <label className="font-semibold text-xs">Country</label>
-                                <SelectCountry countries={data?.['country']} states={data?.['state']} selectedCountry={advertState.getCountryName()} edit={true}  placeholder={"- Select Country -"} onClick={
+                                <SelectCountry 
+                                    countries={data?.['country']} 
+                                    states={data?.['state']} 
+                                    selectedCountry={advertState.getCountryName()} 
+                                    edit={true}  
+                                    placeholder={"- Select Country -"} 
+                                    onClick={
                                     (selectedX, cId) => 
-                                    {
-                                        if(cId != -1)
-                                        {
-                                            setTheState(selectedX)
-                                            setCountryId(cId)
-                                            setTheStateId(-1)
-                                            setCountryMessage("")
-                                            setTheStateOption('reset-state')
-                                        } else {
-                                            setCountryId(-1)
-                                            setTheState([])
-                                            setCountryMessage(COUNTRY_MESSAGE)
-                                        }
-                                    }
-                                } />
+                                      {
+                                         if(cId != -1)
+                                         {
+                                           setTheState(selectedX)
+                                           setCountryId(cId)
+                                           setTheStateId(-1)
+                                           setCountryMessage("")
+                                           setTheStateOption('reset-state')
+                                         } else {
+                                           setCountryId(-1)
+                                           setTheState([])
+                                           setCountryMessage(COUNTRY_MESSAGE)
+                                         }
+                                       }
+                                    } 
+                                    />
                                 { countryMessage && <Message msg={COUNTRY_MESSAGE} status={errMsgStyle} /> }
                             </div>
                             <div 
@@ -860,7 +871,7 @@ export default function CreateAdvert()
                                     <input 
                                         defaultValue={advertState.getPrice()}
                                         className="w-full border border border-3 shadow-md rounded-md py-2 px-3 bg-opacity-75 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out" 
-                                        type="text" name="location" id="location" placeholder="Enter Price" 
+                                        type='number' name="price" id="price" placeholder="Enter Price" 
                                         onChange={(e: any) => 
                                         {
                                             let selected: string = e.target.value

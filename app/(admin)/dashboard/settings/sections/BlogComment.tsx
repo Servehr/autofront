@@ -1,27 +1,81 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BeatLoader } from 'react-spinners'
+import Message from '../../../../../components/shared/Message'
+import { BlogControlUpdate } from '../../../../api/admin/setting'
 
 
-export default function BlogComment({ option }: { option: string }) 
+export default function BlogComment({ option, token, onClick }: { option: string, token: string, onClick: () => void })
 {
-    const Option: string[] = ['yes', 'no']
+    const [loading, setIsLoading] = useState<boolean>(false)
+    const Option: string[] = ['allow', 'pend']
     const [blogComment, setBlogComment] = useState<string>("")
+
+    const [successMsgStyle, setSuccessMsgStyle] = useState<string>('')
+    const [successMessage, setSuccessMessage] = useState<string>("")
+    const [errMsgStyle, setErrMsgStyle] = useState<string>('')
+    const [errorMessage, setErrorMessage] = useState<string>("")
     
-    const SaveBlogComment = () => { setBlogComment("") }
+    useEffect(() => 
+    {
+       setErrMsgStyle('text-md text-red-600 font-bold rounded-lg py-3 px-2')
+       setSuccessMsgStyle('text-md text-white bg-green-600 mb-2 font-bold rounded-lg py-3 px-2')
+    }, []) 
     
+    useEffect(() => 
+    {
+            
+    }, [blogComment])
+    
+    const SaveBlogComment = () => 
+    { 
+        setIsLoading(true)
+        if(blogComment === 'none')
+        {
+           setErrorMessage("Kindly, select option")
+           setIsLoading(false)
+           return false
+        }
+        const saveTheBlog = BlogControlUpdate(blogComment, token)
+        saveTheBlog.then((response) => 
+        {
+           if(response?.status === 200)
+           {
+              setSuccessMessage(response?.message)
+              onClick()
+             //  toast.success(response?.message, {
+             //    position: "top-center",
+             //  })
+             setIsLoading(false)
+             setTimeout(() => 
+             {
+                  setSuccessMessage("")
+             }, 5000)
+           } else {
+             setErrorMessage("Action Failed")
+             setIsLoading(false)
+           }
+        }).then(() => {
+          setIsLoading(false)
+        })
+    }
 
     return (        
-            <div 
+              <div 
                      className="w-full md:w-1/2 rounded-lg mb-5 md:mb-5"
                   >
+                     <h1 className='font-bold text-gray-500'>Decide whether comment on blog should go pending or not</h1>
+                     { errorMessage && <Message msg={errorMessage} status={errMsgStyle} />  }
+                     { successMessage && <Message msg={successMessage} status={successMsgStyle} />  }
+                     
                      <div 
                         className="relative"
                      >
                         <select 
                               defaultValue={blogComment}
-                              className="block appearance-none mb-3 w-full bg-white border border-gray-200 text-gray-700 py-5 px-4 pr-8 text-lg rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                              className="block appearance-none mb-3 w-full bg-white border border-gray-200 text-gray-700 py-5 px-4 pr-8 text-md rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                               onChange={(e: any) => {
                                     // const selected = e.target.value
+                                    setErrorMessage("")
                                     setBlogComment(e.target.value)
                               }}
                         >
@@ -49,7 +103,7 @@ export default function BlogComment({ option }: { option: string })
                               className="px-5 py-3 bg-blue-600 text-white font-semibold text-sm rounded-xl w-max hover:bg-green-800"
                               onClick={() => SaveBlogComment()}
                         >
-                              { blogComment ? ( <BeatLoader size={9} color="#fff" className="text-white" />) : ( "Save" ) } 
+                              { (loading === true) ? ( <BeatLoader size={9} color="#fff" className="text-white" />) : ( "Save" ) } 
                         </button>
                      </div> 
                   </div>

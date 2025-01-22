@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation"
 import DOMPurify from "dompurify"
 import { HiArrowLeft, HiHome } from "react-icons/hi2"
-import { RotateLoader } from "react-spinners"
+import { PuffLoader } from "react-spinners"
 import SlideShowThumbnail from "../../../../../components/SlideShowThumbnail"
 import currencyFormatter from "../../../../../components/util/currency-formatter"
 import { useProductDetail } from "../../../../hook/queries/useProductDetail"
@@ -19,7 +19,7 @@ export default function ProductPreview({ params } : { params : { slug: string } 
               {
                   ((isLoading === false) && ((completed === "no") || (completed === ""))) && <div className="col-span-12 h-[300px] flex justify-center items-center" style={{ marginTop: '60px', paddingTop: '0px' }}
                   >
-                      <RotateLoader className='w-12 h-12' />
+                      <PuffLoader className='w-12 h-12' />
                   </div>
               }  
               {

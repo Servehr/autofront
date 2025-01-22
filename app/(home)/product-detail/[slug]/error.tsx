@@ -4,11 +4,9 @@ import { useEffect } from 'react'
 import { PuffLoader } from 'react-spinners'
  
 export default function Error({
-  error,
-  reset,
+  error
 }: {
   error: Error & { digest?: string }
-  reset: () => void
 }) {
   useEffect(() => {
     console.error(error)
@@ -21,7 +19,7 @@ export default function Error({
     >
         <div 
           className="container flex justify-center items-center ml-20"
-          style={{ marginTop: '250px' }}
+          style={{ marginTop: '100px' }}
         >
             <PuffLoader color="#1c9236" />
             {/* <h2>Something went wrong!</h2>

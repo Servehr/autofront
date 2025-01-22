@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query'
 import Product from '../../components/Product'
-import { RotateLoader } from 'react-spinners'
+import { PuffLoader } from 'react-spinners'
 import MobileCategory from '../../components/category/MobileCategory'
 import WebCategory from '../../components/category/WebCategory'
 import Banner from '../../components/Banner'
@@ -21,7 +21,7 @@ export default function Home()
             {
                 isLoading && <div className="col-span-12 h-[1500px] flex justify-center items-center" style={{ marginTop: '60px', paddingTop: '0px' }}
                 >
-                    <RotateLoader className='w-12 h-12' />
+                    <PuffLoader className='w-12 h-12' />
                 </div>
             }
 

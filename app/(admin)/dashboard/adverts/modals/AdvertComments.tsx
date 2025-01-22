@@ -1,11 +1,10 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { Modal } from "../../../../../components/modal/Modal";
-import { AllSelectedAdvertComment, ControlComment } from "../../../../api/admin/market/adverts";
+import { AllSelectedAdvertComment, CommentModeration, ControlComment } from "../../../../api/admin/market/adverts";
 import { PuffLoader, ScaleLoader } from "react-spinners";
 import { useState } from "react";
 import toast from "react-hot-toast";
-
 
 
 type AdvertProductModalProps = 
@@ -29,6 +28,28 @@ export const AdvertComments = ({ onClick, closeCommentDialog, productId, token }
         {
              const CommentControl = ControlComment(productId, option, commentId, token)
              CommentControl.then((response) => 
+             {                
+                if(response?.status === 200)
+                {      
+                   refetch() 
+                   setControlling(false)
+                   toast.success(response?.data, {
+                          position: "top-center",
+                   });
+                } else {
+                   toast.error(response?.data, {
+                          position: "top-center",
+                  });
+                }
+             }).then(() => {
+                
+             })
+        }
+
+        const moderate = (option: string, commentId: number) =>
+        {
+             const ModerateControl = CommentModeration(productId, option, commentId, token)
+             ModerateControl.then((response) => 
              {                
                 if(response?.status === 200)
                 {      
@@ -108,7 +129,7 @@ export const AdvertComments = ({ onClick, closeCommentDialog, productId, token }
                                                 {
                                                         data?.data &&
                                                         data?.data?.length > 0 &&
-                                                        data?.data?.map((comment: { id: number, enabled: string, comments: string }, index: number) => {
+                                                        data?.data?.map((comment: { id: number, enabled: string, status: string, comments: string }, index: number) => {
                                                                 return (
                                                                         <div 
                                                                             className="w-full flex jusity-between border-2 border-blue-200 rounded-md p-1 mb-2"
@@ -118,11 +139,34 @@ export const AdvertComments = ({ onClick, closeCommentDialog, productId, token }
                                                                                   className="w-10/12 p-2" 
                                                                             >
                                                                                 {comment.comments}
-                                                                            </div> 
+                                                                            </div>
+                                                                            {
+                                                                                (comment?.status === 'active') && 
+                                                                                <div 
+                                                                                    className="w-2/12 pt-2 mr-2 text-center items-center bg-green-600 text-white hover:bg-blue-600 font-bold text-sm px-2 rounded-md hover:text-white font-bold cursor-pointer"
+                                                                                    onClick={() => {
+                                                                                        moderate('reject', comment?.id)
+                                                                                    }}
+                                                                                >         
+                                                                                    {'Reject'}                                                                    
+                                                                                </div>
+                                                                            }
+                                                                            {
+                                                                                ((comment?.status === 'pending') || (comment?.status === 'rejected')) && 
+                                                                                <div 
+                                                                                    className="w-2/12 pt-2 mr-2 text-center text-white items-center bg-red-600 hover:bg-blue-600 font-bold text-sm px-2 rounded-md hover:text-white font-bold cursor-pointer"
+                                                                                    onClick={() => {
+                                                                                        moderate('active', comment?.id)
+                                                                                    }}
+                                                                                >         
+                                                                                    {'Accept'}                                                                    
+                                                                                </div>
+                                                                            }
+                                                                            
                                                                             {
                                                                                 (comment.enabled === 'no') && 
                                                                                 <div 
-                                                                                    className="w-2/12 pt-2 text-center items-center bg-red-600 text-white hover:bg-blue-600 font-bold text-sm rounded-md hover:text-white font-bold cursor-pointer"
+                                                                                    className="w-2/12 pt-2 text-center items-center bg-red-600 text-white hover:bg-blue-600 font-bold text-sm px-2 rounded-md hover:text-white font-bold cursor-pointer"
                                                                                     onClick={() => {
                                                                                         control('yes', comment?.id)
                                                                                     }}
@@ -133,7 +177,7 @@ export const AdvertComments = ({ onClick, closeCommentDialog, productId, token }
                                                                             {
                                                                                 (comment.enabled === 'yes') && 
                                                                                 <div 
-                                                                                    className="w-2/12 pt-2 text-center items-center bg-green-600 hover:bg-blue-600 font-bold text-sm rounded-md hover:text-white font-bold cursor-pointer"
+                                                                                    className="w-2/12 pt-2 text-center items-center bg-green-600 hover:bg-blue-600 font-bold text-sm px-2 rounded-md hover:text-white font-bold cursor-pointer"
                                                                                     onClick={() => {
                                                                                         control('no', comment?.id)
                                                                                     }}

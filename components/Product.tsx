@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { RotateLoader } from 'react-spinners';
+import { PuffLoader } from 'react-spinners';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import ProductCard from './ProductCard';
 import { useInView } from 'react-intersection-observer';
@@ -10,7 +10,6 @@ export default function Products()
 {
     const { ref, inView } = useInView()
     const [currentPage] = useState<number>(1)
-
 
     const {
         fetchNextPage,
@@ -49,7 +48,7 @@ export default function Products()
             {/* {
                 isLoading && <div className="col-span-12 h-[60px] flex justify-center items-center" style={{ marginTop: '60px', paddingTop: '0px' }}
                 >
-                    <RotateLoader className='w-12 h-12' />
+                    <PuffLoader className='w-12 h-12' />
                 </div>
             } */}
 
@@ -65,7 +64,7 @@ export default function Products()
             {
                 <div ref={ref} className="col-span-12 h-[70px] flex justify-center items-center" style={{ marginTop: '60px', paddingTop: '0px' }}
                 >
-                    { isFetchingNextPage && hasNextPage && <RotateLoader className='w-12 h-12' />  }
+                    { isFetchingNextPage && hasNextPage && <PuffLoader className='w-12 h-12' />  }
                     { !isFetchingNextPage && !isFetching && "No Product"  }
                     
                 </div>

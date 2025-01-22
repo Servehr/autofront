@@ -10,7 +10,7 @@ import { DeleteEngineProduct } from './engine/deleteEngineProduct'
 import { UseStore } from '../../../../../../state/store'
 import { useQuery } from '@tanstack/react-query'
 import { GetEngine } from '../../../../../api/admin/market/product-entry/engine'
-import { modelDB, trimDB } from '../../../../../model/Product'
+import { trimDB } from '../../../../../model/Product'
 import { PuffLoader } from 'react-spinners'
 import Pagination from '../../../../../../components/Pagination'
 

@@ -22,12 +22,10 @@ export const AddDepartmentModal = ({onClick, openDepartmentModal, userType, toke
      const [name, setName] = useState<string>("")
      const [description, setDescription] = useState<string>("")
 
-
      useEffect(() => 
      {
         setErrMsgStyle('text-md text-white font-bold bg-red-600 rounded-lg py-3 px-5')
-        setErrorMessage("")
-        console.log({ userType, token })
+        console.log({userType})
      }, []) 
 
      const addDepartment = async () => 

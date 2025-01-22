@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { RotateLoader } from "react-spinners"
+import { PuffLoader } from "react-spinners"
 import { Modal } from "../../../../components/modal/Modal"
 import { useRouter } from "next/navigation"
 import { UseStore } from "../../../../state/store"
@@ -113,7 +113,7 @@ export const PreLoadingModal = ({onClick, preLoadModal, slug, mode}: PreloadProp
                                 className="items-center gap-5 mt-2 sm:flex flex justify-center mb-2 mx-5 mt-5 y-20"
                             >                        
                                 
-                                {   loading ? ( <RotateLoader size={9} className="text-black" />) : ( "" ) } 
+                                {   loading ? ( <PuffLoader size={9} className="text-black" />) : ( "" ) } 
                             </div>
                         </div>
                 </Modal>  
