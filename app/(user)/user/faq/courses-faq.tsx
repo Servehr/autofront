@@ -52,9 +52,10 @@ export default function CoursesFaq()
             }
             {
                (data?.data?.length > 0) 
-                    && data?.data?.map((x: any) => {
+                    && data?.data?.map((x: any, index: number) => {
                      return (
                               <div
+                                key={index}
                                  onClick={
                                           () => {
                                               setCurrentCourse(x)

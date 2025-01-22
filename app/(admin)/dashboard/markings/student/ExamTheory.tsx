@@ -96,6 +96,7 @@ export const ExamTheory = ({onClick, openAddExamTheoryMark, student, token}: Exa
 
                            return (
                                  <div 
+                                    key={index}
                                     className='p-3 mb-5 shadow-md bg-green-100'
                                  >
                                     <div 

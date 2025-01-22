@@ -327,6 +327,7 @@ export default function ExamObjectiveQuestions({ data }: { data: any })
                                   const style = `${currentAnswer} md:flex py-1 px-3 mx-1 justify-center items-center rounded-full font-bold text-black` 
                                   return (
                                       <a 
+                                        key={index}
                                         className={style} title={`Page ${num}`} onClick={() => showQuestion(index)}
                                       >
                                         {index+1}

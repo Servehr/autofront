@@ -79,6 +79,7 @@ export default function Overview()
                 {                                  
                   return (
                       <div 
+                        key={index}
                         className="flex justify-between p-2 bg-white md:col-span-4 col-span-12 text-black font-bold text-sm ring-2 ring-green-100 rounded-lg space-between px-3 border border-solid border-green-900"
                       >
                         <span className="px-3 text-md">{result.name}</span>

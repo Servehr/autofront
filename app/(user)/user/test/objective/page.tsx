@@ -467,10 +467,17 @@ export default function Test()
                       data && (plus?.attended === 0) &&    
                         data.map((num, index) => {
                           const isAnswered = (isSelected(index) === "yes") ? "bg-green-700 border border-solid border-green-700" : "bg-white-600"
-                          const currentAnswer = (currentQuestion === index) ? "bg-blue-600 text-white text-green-500 disabled" : `${isAnswered} border border-gray-700 cursor-pointer hover:border-gray-300 hover:bg-green-800 hover:text-white`
+                          const currentAnswer = (currentQuestion === index) ? "bg-blue-600 text-white text-green-500 disabled" : `${isAnswered} ${num} border border-gray-700 cursor-pointer hover:border-gray-300 hover:bg-green-800 hover:text-white`
                           const style = `${currentAnswer} md:flex py-1 px-3 mx-1 justify-center items-center rounded-full font-bold text-black` 
                           return (
-                            <a className={style} title="Page 1" onClick={() => showQuestion(index)}>
+                            <a 
+                              key={index}
+                              className={style} 
+                              title="Page 1" 
+                              onClick={
+                                () => showQuestion(index)
+                              }
+                              >
                               {index+1}
                             </a>  
                           )

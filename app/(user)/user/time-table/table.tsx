@@ -56,11 +56,12 @@ export default function Table()
                 </div>
             }
             {
-              !isLoading && (data?.data?.length > 0) && data?.data?.map((x: any) => {
+              !isLoading && (data?.data?.length > 0) && data?.data?.map((x: any, index: number) => {
                 let current = (x.test === 1) ? "bg-blue-100" : (x.status === "done") ? "bg-green-100" : ""
                 return (
                     <div 
-                       className={`${current} col-span-12 p-5 border border-1 border-shadow border-blue-200 gap-5`}
+                      key={index}
+                      className={`${current} col-span-12 p-5 border border-1 border-shadow border-blue-200 gap-5`}
                     >
                       <div 
                         className="w-full d-flex md:-mb-7"

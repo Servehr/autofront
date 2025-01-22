@@ -20,6 +20,7 @@ export const CourseModule = ({ modules, subCourseId } : CourseModuleProp) =>
                         modules.map((module: any, index: number) => {
                            return (
                                     <li 
+                                       key={index}
                                        style={{ listStylePosition: 'outside' }}
                                     >
                                       {module}

@@ -80,10 +80,11 @@ export default function CourseDownload()
         }
         
         { !isLoading &&
-          (data?.data?.length > 0) && data?.data?.map((x: any) => {
+          (data?.data?.length > 0) && data?.data?.map((x: any, index: number) => {
             // let hasFile = (x.file_name != null) ? "cursor-pointer" : ""
             return (
                 <button
+                    key={index}
                     disabled={(x.loadable === 0) ? true : false}
                     onClick={
                         () => {
