@@ -105,7 +105,7 @@ export default function HeaderNavigation()
                             <BsFillTelephoneInboundFill 
                                 className='text-white w-16' 
                             />
-                            <p className='text-white md:text-[14px] font-bold text-lg -ml-4 md:-mt-1'>+23409033333367</p>
+                            <p className='text-white md:text-[14px] font-bold text-lg -ml-4 md:-mt-1'>+23409033333367++</p>
                         </span>
                         <FiMenu 
                                 className='text-4xl text-white cursor-pointer md:hidden' 
