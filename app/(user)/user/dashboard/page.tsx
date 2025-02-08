@@ -6,6 +6,7 @@ import { StudentDashboard } from "../../../api/admin/academic/student"
 import { PuffLoader } from "react-spinners"
 import { useEffect, useState } from "react"
 import Result from "./result"
+import PaymentPage from "../PaymentPage"
 
 
 export default function Dashboard() 
@@ -15,6 +16,9 @@ export default function Dashboard()
    const [roles, setRoles] = useState<string[]>([]) 
    const [isStudent, setIsStudent] = useState<boolean>(false) 
    const [isLoaded, setIsLoaded] = useState<boolean>(false) 
+  
+   const [approvalRequest, setApprovalRequest] = useState<string>("")
+ 
 
    useEffect(() => 
    {
@@ -116,11 +120,37 @@ export default function Dashboard()
                     {
                         userToken.getUserRoles().includes('student') && <Result />
                     }
-                    
                 </div>
             }
 
+            
+            { approvalRequest && <p className={`font-bold text-lg text-white rounded-md col-span-12 ${(approvalRequest === "") ? " " : "p-3 bg-blue-600"}`}>{approvalRequest}</p> }
 
+        
+            {
+               !isLoading && (data?.plus?.payment_status === "not-paid") && <>
+                  <PaymentPage 
+                      onClick={(e: boolean | string) => {
+                                if(e === true)
+                                {          
+                                  setApprovalRequest("")
+                                  refetch()
+                                } else {            
+                                  setApprovalRequest(e.toString())      
+                                }
+                              }
+                            }
+                            refetch={
+                                () => {
+                                   refetch()
+                                }
+                            } 
+                            token={token}
+                          />
+                      </>
+            }
+
+            <div className="h-[50px]"></div>
 
 
 

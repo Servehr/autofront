@@ -21,14 +21,12 @@ export default function Exam()
   const [errorMsg, setErrorMsg] = useState<string>("")
   const [defaultDisplay, setDefaultDisplay] = useState<number>(0)
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [dataIsFetched, setIsFetched] = useState<boolean>(false)
 
   // objective
   const [data, setObjectiveQuestionExamObj] = useState<[]>([])
   const [addition, setIsAdditionExamObj] = useState<any>([])
   const [duration, setDuration] = useState<number>(-1)
   const [questionId, setQuestionId] = useState<number>(-1)
-  const [attempted, setAttemptedExamObj] = useState<number>(0)
   const [plus, setPlusExamObj] = useState<any>("")
 
   // theory
@@ -52,12 +50,18 @@ export default function Exam()
         setIsLoadingTheory(true)   
         getQuestions(token)
     }
+    
   }, [])
 
   useEffect(() => 
   {
+     console.log({ questionId, plus, isAdditionExamTheory, theoryDuration, plusTheory, isAttemptedTheoryExam, isLoadingTheory })
+  }, [token])
 
-  }, [isSubmitting])
+  useEffect(() => 
+  {
+
+  }, [questionId, plus, isAdditionExamTheory, theoryDuration, plusTheory, isAttemptedTheoryExam, isLoadingTheory])
 
   const getExamQuestions = (token: string) => 
   {
@@ -216,12 +220,9 @@ export default function Exam()
 
 
   return (
-      <div 
-        className='md:col-span-9 col-span-12 bg-green-400 d-flex bg-green-50 border-shadow drop-shadow-lg md:block h-[fit] px-3 md:px-10 py-5 mt-3 md:rounded-2xl -mb-24 md:mb-0'
-      > 
-
-          
-            
+          <div 
+            className='md:col-span-9 col-span-12 bg-green-400 d-flex bg-green-50 border-shadow drop-shadow-lg md:block h-[fit] px-3 md:px-10 py-5 mt-3 md:rounded-2xl -mb-24 md:mb-0'
+          >     
               {
                 !isLoading && 
                     <div 
@@ -252,25 +253,35 @@ export default function Exam()
                     </div>
                 </>
               }
-              
+              {/* {dataTheory?.length} - {addition?.theory} - {addition?.objective} */}
               {
                   // !loading && (data?.addition?.theory > 0) &&  <> 
-                  isLoading && ((data?.length > 0) || (dataTheory?.length > 0))  && ((addition?.theory > 0) || (addition?.objective > 0)) && (addition?.before === true) && (addition?.between === false) && (addition?.after === false) && <> 
+                  isLoading && ((data?.length > 0)) && (addition?.before === true) && (addition?.between === false) && (addition?.after === false) && <> 
                       <div 
                           className="d-flex justify-center text-center items-center text-lg h-[300px] pt-52 mb-20"
                       >
                          <span 
-                            className="text-blue-800 font-bold"
+                            className="text-blue-800 font-bold mr-1"
                           >
-                            ExAM
+                            ExAM 
                          </span>  
                          is 
                          <span 
-                           className="text-red-500"
+                           className="text-red-500 ml-1 mr-1"
                         >
-                          between
+                          between 
                         </span> 
-                          {addition?.beforeDate} and {addition?.afterDate}
+                        <span 
+                          className="text-blue-800 font-bold mr-1"
+                        >
+                          {addition?.beforeDate}
+                        </span>
+                        and
+                        <span 
+                          className="text-blue-800 font-bold mr-1 ml-1"
+                        >
+                          {addition?.afterDate}
+                        </span>
                           <br />
                         <div
                           onClick={

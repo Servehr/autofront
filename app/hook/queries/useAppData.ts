@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { ApplicationData } from "../../api/home/home"
 import { useAddApplicationData } from "../loadData"
-import { categoryDB, countryDB, engineDB, manufacturerDB, modelDB, productsDB, stateDB, trimDB } from "../../model/Product"
+import { categoryDB, countryDB, engineDB, manufacturerDB, modelDB, productsDB, settingsDB, stateDB, trimDB } from "../../model/Product"
 
 export const useAppData = () => 
 {
@@ -26,6 +26,7 @@ export const useAppData = () =>
           modelDB.clear()
           trimDB.clear()
           engineDB.clear()
+          settingsDB.clear()
           await LoadedData(response?.data)
           setAppData({
                                   data: response?.data,

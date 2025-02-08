@@ -947,9 +947,9 @@ export default function CreateAdvert()
                                             }}    
                                         >
                                             <a 
-                                                className="text-white font-bold -t bg-green-800 hover:bg-blue-700 py-3 px-4 block whitespace-no-wrap cursor-pointer"
+                                                className="text-white font-bold -t bg-green-800 hover:bg-blue-700 text-[14px] py-3 px-4 block whitespace-no-wrap cursor-pointer"
                                             >
-                                                Save 
+                                                Publish Advert 
                                             </a>
                                         </li>
                                         <li className=""
@@ -958,9 +958,9 @@ export default function CreateAdvert()
                                             }}  
                                         >
                                             <a 
-                                                className="text-white font-bold bg-green-800 hover:bg-blue-700 py-3 px-4 w-[150px] block whitespace-no-wrap cursor-pointer"
+                                                className="text-white font-bold bg-green-800 hover:bg-blue-700 text-[12px] py-3 px-4 w-[150px] block whitespace-no-wrap cursor-pointer"
                                             >
-                                                Save As Draft
+                                                Save Advert in Draft
                                             </a>
                                         </li>
                                     </ul>
@@ -986,7 +986,7 @@ export default function CreateAdvert()
                                         SaveAdvert('yes')
                                     }}  
                             >
-                                { loading && (type === 'yes') ? <BeatLoader size={10} color="white" className="py-2" /> : "Save As Draft"}
+                                { loading && (type === 'yes') ? <BeatLoader size={10} color="white" className="py-2" /> : "Save Adver in Draft"}
                             </div>
                             
                             

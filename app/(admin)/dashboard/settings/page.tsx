@@ -16,6 +16,7 @@ import BlogComment from "./sections/BlogComment"
 import { UseStore } from "../../../../state/store"
 import { useQuery } from "@tanstack/react-query"
 import { ControlSettings } from "../../../api/admin/setting"
+import SliderTImer from "./sections/SliderTImer"
 
 
 export default function Settings() 
@@ -102,6 +103,12 @@ export default function Settings()
                               >
                                     <PostComment option={data?.data?.blog_comment} token={token} onClick={() => { refetch() }} />
                                     <BlogComment option={data?.data?.post_comment} token={token} onClick={() => { refetch() }} />
+                              </div>
+
+                              <div 
+                                  className="mb-4 md:w-full d-flex md:flex gap-5"
+                              >
+                                  <SliderTImer value={data?.data?.timer} token={token} onClick={() => { refetch() }} />
                               </div>
 
                         </div>

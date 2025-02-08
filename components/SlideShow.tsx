@@ -4,14 +4,19 @@ import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 import currencyFormatter from './util/currency-formatter';
 import { USAGE_PATH } from '../constant/Path';
 import { HiOutlineSpeakerphone } from 'react-icons/hi';
+import { useLiveQuery } from "dexie-react-hooks";
+import { settingsDB } from '../app/model/Product';
 
 
-export default function SlideShow({ data, imageSize }: { data: any, imageSize: number }) 
+export default function SlideShow({ data, imageSize, timer }: { data: any, imageSize: number, timer: number }) 
 {
     const router = useRouter()
     const [slide, setSlide] = useState<number>(0)
+    const slideTimer = useLiveQuery(() => settingsDB.get(1));
+    let timing: number = Number(slideTimer?.timer)
     let sliderTimeOut: any;
 
+  
     useEffect(() => 
     {
         sliderTimeOut =  setTimeout(() => 
@@ -27,8 +32,8 @@ export default function SlideShow({ data, imageSize }: { data: any, imageSize: n
             } else {
                 setSlide(0)
             }
-        }, 5000);
-    }, [slide])
+        }, timing);
+    }, [timing])
 
     const nextSlide = () => 
     {

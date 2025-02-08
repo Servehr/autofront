@@ -15,19 +15,20 @@ import swap from '../../../../public/swap-car.png'
 import Featured from "../../../../components/Featured"
 import Follow from "../../../../components/Follow"
 import ProductComment from "../../../../components/ProductComment"
+import Link from "next/link"
 
 
 export default function ProductDetail({ params } : { params : { slug: string } }) 
 {   
   const router = useRouter()
-  const { data, isLoading, completed, category, featured } = useProductDetail(params?.slug)
+  const { data, isLoading, completed, category, featured, isError, error } = useProductDetail(params?.slug)
 
   return (
           <>  
               {
                   (isLoading === true) && <div className="col-span-12 h-[750px] flex justify-center items-center" style={{ marginTop: '20px', paddingTop: '0px' }}
                   >
-                      <PuffLoader className='w-12 h-12' />
+                      {/* <PuffLoader className='w-12 h-12' /> */}
                   </div>
               }              
               {/* {
@@ -53,7 +54,8 @@ export default function ProductDetail({ params } : { params : { slug: string } }
                           <div 
                               className="hidden md:block col-span-3 p-5"
                           >
-                               <Image className="object-cover" src={ownACar} alt={""} />                               
+                               <Image className="object-cover" src={ownACar} alt={""} />         
+                                {/* <Nice /> */}
                                <Image className="object-cover" src={swap} alt={""} />
                           </div>
                           <div 
@@ -74,15 +76,21 @@ export default function ProductDetail({ params } : { params : { slug: string } }
                                       <div 
                                           className="flex justify-center items-center bg-white rounded-lg px-2"
                                         >
-                                          <HiHome className="mr-2 text-blue-500" /> 
+                                          <Link 
+                                            href={'/'}
+                                          >
+                                              <HiHome 
+                                                  className="mr-2 text-blue-500" 
+                                              /> 
+                                          </Link>
                                           {'>>'} 
                                           <span 
                                               className="font-bold ml-2 text-sm mr-3 text-green-600 cursor-pointer hover:text-red-700"
                                               onClick={() => {
-                                                  router.push(`/x-x-x/${data?.['category']['hash']}`)
+                                                  router.push(`/x-x-x/${data?.['hash']}`)
                                               }}
                                           >
-                                              {data?.['category']['name']}
+                                              {data?.['category']}
                                           </span> 
                                           {'>>'} 
                                           <span 
@@ -97,30 +105,31 @@ export default function ProductDetail({ params } : { params : { slug: string } }
                                     className="font-bold text-[23px] md:text-[30px] text-gray-500 mt-5 mb-2"
                                 >
                                    {data?.['title']}
-                                </div>
-                                <div 
+                              </div>
+                              <div 
                                   className="font-bold text-sm mt-1 flex justify-between items-center"
                                 >
-                                  <span className="text-blue-600 text-[12px] md:text-[14px]">{data?.['created_at']}</span>
+                                  <span className="text-blue-600 text-[14px] md:text-[14px]">{data?.['date']}</span>
                                   <span 
                                     className="text-blue-500 text-[12px] md:text-[14px] flex justify-center items-center"
                                   >
-                                    <p className="text-black mr-3">Comments: </p><p className='font-bold text-[14px] md:text-[16px]'>{data?.['comments_count']}</p>
+                                    {/* <p className="text-black mr-3">Comments: </p><p className='font-bold text-[14px] md:text-[16px]'>{data?.['comments_count']}</p> */}
                                   </span>
                                   <span 
                                     className="text-blue-500 text-[12px] md:text-[14px] flex justify-center items-center"
                                   >
                                     <p className="text-black mr-3">Views: </p><p className='font-bold text-[14px] md:text-[16px] text-red-500'>{data?.['views']}</p>
                                   </span>
-                                </div>
+                              </div>
                               <div 
-                                className="font-bold text-md mt-7 flex justify-between items-center"
+                                className="font-bold text-md mt-2 flex justify-between items-center"
                               >
-                                <span 
-                                    className="text-blue-600"
+                                <section 
+                                    className="text-blue-600 flex"
                                 >
-                                  <img src={`${USAGE_PATH.AVATAR}${data?.['user']['passport']}`} className="rounded-full" width={70} height={70} />
-                                </span>                                
+                                  <img src={`${USAGE_PATH.AVATAR}${data?.['passport']}`} className="rounded-full" width={70} height={70} />
+                                  <span className="font-bold ml-5 mt-1 md:mt-5">{data?.['firstname']} {data?.['surname']}</span>
+                                </section>
                                 <span 
                                     className="text-blue-500 text-sm flex justify-center items-center"
                                 >
@@ -159,7 +168,7 @@ export default function ProductDetail({ params } : { params : { slug: string } }
                                       <div className="bg-blue-500 py-3 px-4 d-flex sm:pt-5 md:px-2 md:py-2 flex justify-center item-center"> 
                                           <HiMiniPhoneArrowUpRight className="text-white" />
                                       </div>
-                                      <a href={`tel:${data?.['user']['phone']}`} className="bg-green-700 rounded-br-md rounded-tr-md w-full px-3 py-2 text-xs justify-center font-bold text-white col-span-6">
+                                      <a href={`tel:${data?.['phone']}`} className="bg-green-700 rounded-br-md rounded-tr-md w-full px-3 py-2 text-xs justify-center font-bold text-white col-span-6">
                                           <span className="text-sm w-full flex justify-center text-center">Advertiser</span>
                                       </a>
                                   </div>
@@ -171,7 +180,7 @@ export default function ProductDetail({ params } : { params : { slug: string } }
                                       > 
                                           <HiMiniPhoneArrowUpRight className="text-white" />
                                       </div>
-                                      <a href={`tel:${data?.['user']['phone']}`} className="bg-green-700 rounded-br-md rounded-tr-md w-full px-3 py-2 text-xs justify-center font-bold text-white col-span-6">
+                                      <a href={`tel:${`+23409033333367`}`} className="bg-green-700 rounded-br-md rounded-tr-md w-full px-3 py-2 text-xs justify-center font-bold text-white col-span-6">
                                           <span className="text-sm w-full flex justify-center text-center">For Complaint</span>
                                       </a>
                                   </div>    
@@ -188,7 +197,7 @@ export default function ProductDetail({ params } : { params : { slug: string } }
                                     >
                                       <p>Manufacturer:</p>
                                       <p className="text-brandGreen">
-                                        {`${data?.['manufacturer']['name']}`}
+                                        {`${data?.['manufacturer']}`}
                                       </p>
                                     </div>
                                     <div 
@@ -196,28 +205,28 @@ export default function ProductDetail({ params } : { params : { slug: string } }
                                     >
                                       <p>Model:</p>
                                       <p className="text-brandGreen">
-                                        {`${data?.['model']['name']}`}
+                                        {`${data?.['model']}`}
                                       </p>
                                     </div>                        
                                     <div className="bg-[#ebf2fb] h-10 w-full flex justify-between px-4 items-center">
                                         <p>Trim:</p>
-                                        { data?.['trim'] ? `${data?.['trim']['name']}` : 'Not Specififed' }
+                                        { data?.['trim'] ? `${data?.['trim']}` : 'Not Specififed' }
                                     </div>                     
                                     <div className="bg-[#ebf2fb] h-10 w-full flex justify-between px-4 items-center">
                                         <p>Engine:</p>
-                                        { data?.['engine'] ? `${data?.['engine']['name']}` : 'Not Specififed' }
+                                        { data?.['engine'] ? `${data?.['engine']}` : 'Not Specififed' }
                                     </div>
                                     <div className="bg-[#ebf2fb] h-10 w-full flex justify-between px-4 items-center">
                                       <p>Colour:</p>
                                       <p className="text-brandGreen">
-                                        {`${data?.['colour']['name']}`}
+                                        {`${data?.['colour']}`}
                                       </p>
                                     </div>
                                     {/* Transmission */}
                                     <div className="bg-[#ebf2fb] h-10 w-full flex justify-between px-4 items-center">
                                       <p>Transmission:</p>
                                       <p className="text-brandGreen">
-                                        {`${data?.['transmission']['name']}`}
+                                        {`${data?.['transmission']}`}
                                       </p>
                                     </div>
                                     {/* Year */}
@@ -251,13 +260,13 @@ export default function ProductDetail({ params } : { params : { slug: string } }
                                   <div className="bg-[#ebf2fb] h-10 w-full flex justify-between px-4 items-center">
                                     <p>Country</p>
                                     <p className="text-brandGreen">
-                                      {`${data?.['country']['name']}`}
+                                      {`${data?.['country']}`}
                                     </p>
                                   </div>
                                   <div className="bg-[#ebf2fb] h-10 w-full flex justify-between px-4 items-center">
                                     <p>State</p>
                                     <p className="text-brandGreen">
-                                      {`${data?.['state']['name']}`}
+                                      {`${data?.['state']}`}
                                     </p>
                                   </div>
                                   {/* Seat */}
@@ -274,7 +283,7 @@ export default function ProductDetail({ params } : { params : { slug: string } }
                                 </div>
                               </div>
 
-                              <ProductComment productId={`${data?.['id']}`} vendorId={`${data?.['user_id']}`} />
+                              <ProductComment productId={`${data?.['product_id']}`} vendorId={`${data?.['user_id']}`} />
 
                               <div className="h-[10px]"></div>
 
@@ -313,3 +322,5 @@ export default function ProductDetail({ params } : { params : { slug: string } }
           </>
   )
 }
+
+

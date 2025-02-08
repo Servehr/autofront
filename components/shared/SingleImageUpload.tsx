@@ -18,7 +18,7 @@ export default function SingleImageUpload({width, space, ICloudColour, onClick}:
 {
     const [userPassport, setUserPassport] = useState<string>("")
     const [passport, setPassport] = useState<string>("")
-    const [uploadText, setUploadText] = useState<string>("Click to upload passport")
+    const [uploadText, setUploadText] = useState<string>("Click to upload profile picture")
     let photograph!: HTMLDivElement
 
     useEffect(() => 
@@ -67,7 +67,7 @@ export default function SingleImageUpload({width, space, ICloudColour, onClick}:
         photo.style.height = '300px'
         cloud.style.display = 'none'
         cloud.style.fontSize = '10px'
-        setUploadText("Click to change passport")
+        setUploadText("Click to change profile picture")
         photo.style.backgroundImage = `url(${passportUrl})`
 
         const image = Array.from(e.target.files)

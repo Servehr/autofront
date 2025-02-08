@@ -77,7 +77,13 @@ export default function Page()
             }
             return false
       }
-    
+      
+      
+      const SubmitData = (event: any) => 
+      {
+         event.preventDefault();
+         ResetPassword()
+      }
     
       const allFields = () =>
       {
@@ -121,6 +127,10 @@ export default function Page()
                         <div 
                               className="w-full p-4 md:px-9 md:pt-10 md:pb-5 pb-14 d-flex items-center justify-center rounded-md md:rounded-xl bg-[#23913b] hover:text-white mb-20 md:mb-0 border-2 border-green-700"
                         >
+                              
+                              <form 
+                                    onSubmit={SubmitData}
+                              >
                                     <div  
                                           className='w-full d-flex gap-10 md:mb-3 mt-5'
                                     > 
@@ -188,6 +198,7 @@ export default function Page()
                                                 { loading ? <BeatLoader size={10} color="white" className="" /> : "Submit"}
                                           </button>
                                     </div>
+                              </form>
                                     <div  
                                           className='w-full flex justify-between md:flex gap-10 md:mb-3 mt-10 px-5 pb-5'
                                     >                                       

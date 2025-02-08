@@ -4,15 +4,13 @@ import { useQuery } from "@tanstack/react-query"
 import { UseStore } from "../../../../state/store"
 import { StudentDashboard } from "../../../api/admin/academic/student"
 import { PuffLoader } from "react-spinners"
-
  
  
 export default function Result()
 {
   const profile = UseStore((state) => state)
   const token: string = profile.getUserToken()
-
-  const { data, isLoading } = useQuery({ queryKey: [`student-shedule`], queryFn: () => StudentDashboard(token) })
+  const { data, isLoading, refetch } = useQuery({ queryKey: [`student-shedule`], queryFn: () => StudentDashboard(token) })
 
   if(!isLoading)
   {
@@ -32,6 +30,7 @@ export default function Result()
                  <PuffLoader color="#1c9236" />
               </div>
         }
+
         { !isLoading && (data?.plus?.payment_status === "paid") && (data?.plus?.access === "granted") &&
             <>
               <div 

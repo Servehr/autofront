@@ -69,6 +69,9 @@ export const Logout = ({onClick, deleteModal, token}: SaveDraftProps)  =>
            UserPics.setExamTheoryIdentifier('')
            UserPics.setDataLoadedExamTheory(false)
            UserPics.setForceExamObj('no')
+           UserPics.setUserRoles([])
+
+           UserPics.setSideType('')
 
         //    UserPics.setPlusExamObj('')
            window.location.href = '/'

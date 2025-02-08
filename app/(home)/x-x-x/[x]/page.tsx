@@ -8,6 +8,7 @@ import { PuffLoader } from "react-spinners"
 import ProductCard from "../../../../components/ProductCard"
 import { HiArrowLeft, HiHome } from "react-icons/hi2"
 import { CategoryProduct } from "../../../api/home/market/AllProduct"
+import Link from "next/link"
 
 
 export default function Category() 
@@ -67,7 +68,19 @@ export default function Category()
                     <div 
                         className="flex justify-center items-center bg-white rounded-lg px-2"
                     >
-                        <HiHome className="mr-2 text-blue-500" /> {'>>'} <span className="font-bold ml-2 text-sm">Category Name</span>
+                        <Link 
+                            href={'/'}
+                        >
+                            <HiHome 
+                                className="mr-2 text-blue-500" 
+                            /> 
+                        </Link>   
+                        {/* {'>>'}  */}
+                        {/* <span 
+                            className="font-bold ml-2 text-sm"
+                        >
+                            Category Name
+                        </span> */}
                     </div>
                 </div>
               </div>
