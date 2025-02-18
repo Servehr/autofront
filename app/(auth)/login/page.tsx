@@ -10,7 +10,7 @@ export default function Page()
       return (
             <>  
                   {/* <Access showLogo={false} goTo={`/user/adverts`} /> */}
-                  <Access showLogo={false} goTo={`/`} />
+                  <Access showLogo={true} goTo={`/`} />
             </>
       )
 }

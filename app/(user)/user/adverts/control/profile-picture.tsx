@@ -27,10 +27,11 @@ export default function ProfilePicture()
             {
               token &&           
                 <div 
-                    className='w-full'
+                    className='w-full md:w-7/12 mx-auto'
                 >
                   {
-                    picture && <img src={`${USAGE_PATH.AVATAR}${Passport.getPassport()}`} width={300}  className='mt-5 mb-5 rounded-lg' />
+                    picture && <img src={`${USAGE_PATH.AVATAR}${Passport.getPassport()}`} width={400}  className='mt-5 mb-5 rounded-lg' />
+                    // picture && <img src={`${Passport.getPassport()}`} width={400}  className='mt-5 mb-5 rounded-lg' />
                   }
                   {/* {
                     !picture &&

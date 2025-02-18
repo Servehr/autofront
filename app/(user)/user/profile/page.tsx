@@ -75,6 +75,11 @@ export default function Profile()
 
       useEffect(() => 
       {
+            
+      }, [email]) 
+
+      useEffect(() => 
+      {
             setRefresh(false)
       }, [firstname, surname, middlename, email, phone, errorMessage, refresh, companyName, companyAddress, rcNumber, middlenameMessage])
 
@@ -87,27 +92,30 @@ export default function Profile()
             if(type === 'dealer')
             {
                user = {
-                    company_name: (companyAddress === "") ? data?.data?.dealers?.company_name : "",
-                    company_address: (companyAddress === "") ? data?.data?.dealers?.company_address : "",
-                    rc_number: (rcNumber === "") ? data?.data?.dealers?.rc_number : "",
-                    firstname: (firstname === "") ? data?.data?.firstname : "",
-                    surname: (surname === "") ? data?.data?.surname : "",
-                    middlename: (middlename === "") ? data?.data?.midddlename : "",
-                    phone: (phone === "") ? data?.data?.phone : "",
-                    email: (email === "") ? data?.data?.email : "",
+                    company_name: (companyAddress === "") ? data?.data?.dealers?.company_name : companyAddress,
+                    company_address: (companyAddress === "") ? data?.data?.dealers?.company_address : companyAddress,
+                    rc_number: (rcNumber === "") ? data?.data?.dealers?.rc_number : rcNumber,
+                    firstname: (firstname === "") ? data?.data?.firstname : firstname,
+                    surname: (surname === "") ? data?.data?.surname : surname,
+                    middlename: (middlename === "") ? data?.data?.midddlename : middlename,
+                    phone: (phone === "") ? data?.data?.phone : phone,
+                    email: (email === "") ? data?.data?.email : email,
                     url: 'dealer/update-profile'
                   }
             } else {
                   user = 
                   {
-                        firstname: (firstname === "") ? data?.data?.firstname : "",
-                        surname: (surname === "") ? data?.data?.surname : "",
-                        middlename: (middlename === "") ? data?.data?.midddlename : "",
-                        phone: (phone === "") ? data?.data?.phone : "",
-                        email: (email === "") ? data?.data?.email : "",
+                        firstname: (firstname === "") ? data?.data?.firstname : firstname,
+                        surname: (surname === "") ? data?.data?.surname : surname,
+                        middlename: (middlename === "") ? data?.data?.midddlename : middlename,
+                        phone: (phone === "") ? data?.data?.phone : phone,
+                        email: (email === "") ? data?.data?.email : email,
                         url: 'member/update-profile'
                    }                        
             }
+            // alert(email)
+            // setLoading(false)
+            // return
             const updateProfile = UserProfile(user, token)
             updateProfile.then((response) => 
             {

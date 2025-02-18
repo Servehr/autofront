@@ -165,7 +165,7 @@ export default function StudentDealerNavigation({ classRoom, bg, hover  }: Stude
                                         key={Math.random()} 
                                         className={`px-5 py-2 ${(page === `/classroom/change-passport`) ? bg : hover} hover:bg-green-900 text-whiterounded-md mb-1 cursor-pointer rounded-lg text-center uppercase text-white font-bold hover:text-white`}
                                     >
-                                        {`Change Passport`}
+                                        {`Change Profile Picture`}
                                     </li>
                                 </Link>               
                                 <li 

@@ -80,6 +80,12 @@ export default function Page()
           if(email === ""){ setEmailMessage(EMAIL_MESSAGE); validity = 'invalid' }
           return validity
       }
+
+      const SubmitData = (event: any) => 
+      {
+         event.preventDefault();
+         Forgot()
+      }
     
       return (
       <>  
@@ -114,7 +120,11 @@ export default function Page()
                         </div>
                         <div 
                               className="w-full md:p-10 p-3 md:px-9 md:pt-10 md:pb-5 d-flex items-center justify-center rounded-md md:rounded-xl bg-[#23913b] hover:text-white mb-20 md:mb-0 border-2 border-green-700"
-                        >
+                        >                              
+                              
+                              <form 
+                                    onSubmit={SubmitData}
+                              >
                                     <div  
                                           className='w-full d-flex gap-10 md:mb-3 mt-4'
                                     > 
@@ -158,6 +168,7 @@ export default function Page()
                                                 { loading ? <BeatLoader size={10} color="white" className="" /> : "Submit"}
                                           </button>
                                     </div>
+                              </form>
                                     <div  
                                           className='w-full flex justify-between md:flex gap-10 md:mb-3 mt-10 px-5 pb-5'
                                     >                                       

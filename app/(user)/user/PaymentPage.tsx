@@ -80,7 +80,7 @@ export default function PaymentPage({ onClick, refetch, token } : clickOn)
                             }
                         }
                     >
-                        Authenticate if you made payment manually
+                        Click to upload payment reciept
                     </a>
                 </div>
               </div>

@@ -21,7 +21,7 @@ const SelectFuel = ({ onClick, placeholder, selectedFuel, incomingData, edit }: 
   const [inputValue, setInputValue] = useState<string>("")
   const [selected, setSelected] = useState<string>("")
   const [open, setOpen] = useState(false)
-  const [nothing] = useState<boolean>(false)
+  const [fuelId, setFuelId] = useState<number>(Number(advertState.getFuel()))
 
   useEffect(() => 
   {
@@ -31,8 +31,10 @@ const SelectFuel = ({ onClick, placeholder, selectedFuel, incomingData, edit }: 
   
   useEffect(() => 
   {
-      onClick(-1)
-  }, [nothing])
+      onClick(Number(advertState.getFuel()))
+  }, [fuelId])
+
+  
 
   return (
         <div 
@@ -69,7 +71,7 @@ const SelectFuel = ({ onClick, placeholder, selectedFuel, incomingData, edit }: 
                         type="text"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value.toLowerCase())}
-                        placeholder="Enter country name"
+                        placeholder="Search Fuel"
                         className="placeholder:text-gray-700 p-2 outline-none w-full"
                     />
                 </div> 
@@ -83,6 +85,7 @@ const SelectFuel = ({ onClick, placeholder, selectedFuel, incomingData, edit }: 
                             setInputValue("")
                             advertState.setFuel(-1)
                             advertState.setFuelName("")
+                            setFuelId(-1)
                         }}
                     >
                         - Select Fuel -
@@ -108,6 +111,8 @@ const SelectFuel = ({ onClick, placeholder, selectedFuel, incomingData, edit }: 
                                 setInputValue("")
                                 advertState.setFuel(x?.tb_id)
                                 advertState.setFuelName(x?.name) 
+                                setFuelId(Number(x?.tb_id))
+                                // onClick(Number(advertState.getFuel()))
                             }}
                         >
                             {x?.name}

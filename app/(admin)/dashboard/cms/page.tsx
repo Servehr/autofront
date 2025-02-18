@@ -5,6 +5,7 @@ import ContactUs from "./pages/contact";
 import AboutUs from "./pages/about";
 import IAgree from "./pages/iAgree";
 import Maceos from "./pages/maceos";
+import BankDetail from "./pages/bank";
 
 
 export default function  Pages()
@@ -27,6 +28,10 @@ export default function  Pages()
         {
           label: "MACEOS",
           content: <Maceos />
+        },
+        {
+          label: "BANK DETAILS",
+          content: <BankDetail />
         },
       ]
 

@@ -8,6 +8,7 @@ import Image from "next/image"
 import { GetModuleSubmodules } from "../../api/admin/academic/courses"
 import { CoursesPreview } from "../../../components/CoursesPreview"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 
 export default function Academy() 
@@ -40,7 +41,7 @@ export default function Academy()
       <>
           {
               isLoading && <div 
-                                className="col-span-12 h-[500px] flex justify-center items-center" 
+                                className="col-span-12 h-[700px] flex justify-center items-center" 
                                 style={{ marginTop: '30px', paddingTop: '20px' }}
                            >
                   <BeatLoader color="#1c9236" />
@@ -49,12 +50,32 @@ export default function Academy()
           <div 
              className='container md:grid md:grid-cols-12 justify-center mt-7 mb-4 mx-auto'
           > 
+          
             {
               !isLoading && data && 
                <>
                  <div 
                     className="col-span-9 rounded shadow-xl item-center p-6 rounded shadow-xl"
-                 > 
+                 >  
+                    <div 
+                      className="w-full flex p-1 text-sm justify-left items-center md:mx-7"
+                    >
+                      <Link 
+                          className="font-bold flex justify-center items-center -ml-8 hover:text-blue-400"
+                          onClick={
+                            () => {
+                               router.back()
+                            }
+                          }
+                          href={`#`}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 font-bold text-md">
+                            <path fill-rule="evenodd" d="M10.72 11.47a.75.75 0 0 0 0 1.06l7.5 7.5a.75.75 0 1 0 1.06-1.06L12.31 12l6.97-6.97a.75.75 0 0 0-1.06-1.06l-7.5 7.5Z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M4.72 11.47a.75.75 0 0 0 0 1.06l7.5 7.5a.75.75 0 1 0 1.06-1.06L6.31 12l6.97-6.97a.75.75 0 0 0-1.06-1.06l-7.5 7.5Z" clip-rule="evenodd" />
+                        </svg>
+                        &nbsp;Back
+                      </Link>
+                    </div>
                     <h1 
                       className="font-bold uppercase mb-5 mr-10 w-full text-blue-900" 
                       style={{fontSize: "30px"}}
