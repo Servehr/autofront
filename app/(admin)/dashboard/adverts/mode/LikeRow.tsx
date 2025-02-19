@@ -100,7 +100,7 @@ export default function LikeRow()
     useEffect(() => 
     {
        refetch()
-    }, [perPage, searchQuery])
+    }, [perPage, searchQuery, refetch])
   
     const ShowStates = (page: any) => 
     {
