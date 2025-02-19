@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import DOMPurify from "dompurify"
 import { HiArrowLeft, HiHome, HiMiniPhoneArrowUpRight } from "react-icons/hi2"
 import { useProductDetail } from "../../../hook/queries/useProductDetail"
-import { PuffLoader } from "react-spinners"
+// import { PuffLoader } from "react-spinners"
 import Image from 'next/image'
 import { USAGE_PATH } from "../../../../constant/Path"
 import currencyFormatter from "../../../../components/util/currency-formatter"
@@ -21,7 +21,7 @@ import Link from "next/link"
 export default function ProductDetail({ params } : { params : { slug: string } }) 
 {   
   const router = useRouter()
-  const { data, isLoading, completed, category, featured, isError, error } = useProductDetail(params?.slug)
+  const { data, isLoading, completed, category, featured } = useProductDetail(params?.slug)
 
   return (
           <>  
@@ -54,9 +54,9 @@ export default function ProductDetail({ params } : { params : { slug: string } }
                           <div 
                               className="hidden md:block col-span-3 p-5"
                           >
-                               <Image className="object-cover" src={ownACar} alt={""} />         
+                               <Image className="object-cover" src={ownACar} alt={"banner-1"} />         
                                 {/* <Nice /> */}
-                               <Image className="object-cover" src={swap} alt={""} />
+                               <Image className="object-cover" src={swap} alt={"banner-2"} />
                           </div>
                           <div 
                               className="col-span-12 md:col-span-6 p-5 d-flex justify-between border-shadow border-2 border-gray-100"
