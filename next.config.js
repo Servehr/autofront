@@ -8,8 +8,18 @@ const nextConfig = {
     SECRET_KEY: 'kHbSN.%_&Pf4D}(V9-}X2,?23K0m=U5zGe#7yhLe6(dQtxi%R{92zC1tya31JTB5Lbf*b?h.G;L7#KGML?*rc)H,E?3F%F=N/Hg}',
     ENV: 'development'
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.scentsbyhoppey.com',
+        port: '',
+        pathname: '/**'
+      }
+    ]
+  },
   
 }
-
+// https://www.scentsbyhoppey.com/product/679cce8ee1c33-9.jpg
 module.exports = nextConfig
 
