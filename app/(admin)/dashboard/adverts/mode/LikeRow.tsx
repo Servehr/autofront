@@ -96,11 +96,15 @@ export default function LikeRow()
        setRefresh(false)
     }, [open, showModal, employeeId, isItThis, openModal, showingStates, refresh])
   
+    const refetcch = () => 
+    {
+        refetch()
+    }
 
     useEffect(() => 
     {
-       refetch()
-    }, [perPage, searchQuery, refetch])
+        refetcch()
+    }, [perPage, searchQuery])
   
     const ShowStates = (page: any) => 
     {

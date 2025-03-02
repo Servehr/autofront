@@ -8,7 +8,7 @@ type AgreementProp =
     onClick: (currentSection: number) => void
 }
 
-export async function Agreement({onClick}: AgreementProp) 
+export function Agreement({onClick}: AgreementProp) 
 {
 
   const THANK_YOU = `Thank you for choosing us. AutoHub Nigeria is the first automobile inter-business company in Nigeria and Africa at
@@ -143,6 +143,7 @@ export async function Agreement({onClick}: AgreementProp)
                         {agree}
                       </button>
                   </div>
+                  
               </section>
           </div>
         }

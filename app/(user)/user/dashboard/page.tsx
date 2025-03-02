@@ -7,6 +7,7 @@ import { PuffLoader } from "react-spinners"
 import { useEffect, useState } from "react"
 import Result from "./result"
 import PaymentPage from "../PaymentPage"
+import Marketi from "./marketi"
 
 
 export default function Dashboard() 
@@ -18,12 +19,12 @@ export default function Dashboard()
    const [isLoaded, setIsLoaded] = useState<boolean>(false) 
   
    const [approvalRequest, setApprovalRequest] = useState<string>("")
- 
+   const rls: any = userToken.getUserRoles()
+   const rols: any = 
 
    useEffect(() => 
    {
-     setRoles(userToken.getUserRoles())
-     console.log(roles)
+     setRoles(rls)
      if(roles.includes("student"))
      {
        setIsStudent(true)
@@ -32,6 +33,10 @@ export default function Dashboard()
    }, [])
 
    const { data, isLoading, refetch } = useQuery({ queryKey: [`user-summary`], queryFn: () => StudentDashboard(token) })
+   if(!isLoading)
+   {
+      console.log(data)
+   }
 
 //    const overview: { name: string, count: number }[] = 
 //     [
@@ -116,9 +121,13 @@ export default function Dashboard()
                         })
                         }
                     </div> */}
+                    
                     <div className="h-[30px]"></div>
                     {
-                        userToken.getUserRoles().includes('student') && <Result />
+                        (userToken.getUserRoles().includes('member') || userToken.getUserRoles().includes('dealer') || userToken.getUserRoles().includes('admin') || userToken.getUserRoles().includes('super-admin')) && ((userToken.getSideType() === 'member') || (userToken.getSideType() === 'admin') ||  (userToken.getSideType() === 'super-admin') || userToken.getSideType() === 'dealer') && <Marketi ads={data?.additions} />
+                    }
+                    {
+                        userToken.getUserRoles().includes('student') && (userToken.getSideType() === 'student') && <Result />
                     }
                 </div>
             }
@@ -126,9 +135,8 @@ export default function Dashboard()
             
             { approvalRequest && <p className={`font-bold text-lg text-white rounded-md col-span-12 ${(approvalRequest === "") ? " " : "p-3 bg-blue-600"}`}>{approvalRequest}</p> }
 
-        
             {
-               !isLoading && (data?.plus?.payment_status === "not-paid") && <>
+               !isLoading && (userToken.getSideType() === 'student') && (data?.plus?.payment_status === "not-paid") && <>
                   <PaymentPage 
                       onClick={(e: boolean | string) => {
                                 if(e === true)

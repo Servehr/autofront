@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { BsGeoAltFill } from 'react-icons/bs'
 import { USAGE_PATH } from '../constant/Path'
@@ -38,15 +39,30 @@ export default function ProductCard({ product, refetchs }: ProductDetail)
                             <div 
                                 className="border border-4 border-blue-50 h-fit rounded-t-lg bg-no-repeat bg-center bg-cover relative flex justify-center items-center"
                                 >
-                                <img    
+                                {/* <img    
                                     src={`${USAGE_PATH.PRODUCT_FACE}${product?.face_image}`} 
-                                    // src={`${product?.face_image}`} 
+                                    src={`${product?.face_image}`} 
                                     onClick={() => 
                                       {
                                          router.push(`/product-detail/${product?.slug}`)
                                       }
                                     }
-                                />
+                                /> */}
+                                <div 
+                                    className='w-full h-[160px] md:h-[280px]'
+                                >
+                                    <Image 
+                                        src={`${USAGE_PATH.PRODUCT_FACE}${product?.face_image}`} 
+                                        alt={`${product?.face_image}`}
+                                        layout='fill'
+                                        className='object-fit '
+                                        onClick={() => 
+                                        {
+                                            router.push(`/product-detail/${product?.slug}`)
+                                        }
+                                        } 
+                                    /> 
+                                </div>
                                 <div 
                                     className="text-right"
                                 >

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation"
 import { PendingProducts } from "../../../api/home/market/user/product"
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
+import Image from 'next/image'
 import { BsGeoAltFill } from "react-icons/bs"
 import { PuffLoader } from "react-spinners"
 import Pagination from "../../../../components/Pagination"
@@ -66,7 +67,7 @@ export default function PendingProduct()
                     </>
                 }
                   
-                {  !isLoading && (data?.data?.product_advert?.product.length > 0) && <>
+                {  !isLoading && (data?.data?.product_advert?.noOfPages > 0) && <>
                         <div 
                             className="container px-2 mr-3 border-2 border-gray-200 flex justify-between items-center mb-5"
                         >
@@ -84,7 +85,7 @@ export default function PendingProduct()
                     className="grid grid-cols-12 gap-5 rounded-md mb-5 gap-2 md:mx-0 mr-2"
                 >
                 {
-                  !isLoading && (data?.data?.product_advert?.product.length > 0) && data?.data?.product_advert?.product.map((product: any, index: number) => 
+                  !isLoading && (data?.data?.product_advert?.noOfPages > 0) && data?.data?.product_advert?.product.map((product: any, index: number) => 
                             {
                                 return (
                                     <>
@@ -98,7 +99,7 @@ export default function PendingProduct()
                                                 <div 
                                                     className="w-6/12"
                                                 >
-                                                    <img src={`${USAGE_PATH.PRODUCT_FACE}${product?.face_image}`} 
+                                                    {/* <img src={`${USAGE_PATH.PRODUCT_FACE}${product?.face_image}`} 
                                                          width={300} height={300}  
                                                          onClick={() => 
                                                          {
@@ -106,7 +107,19 @@ export default function PendingProduct()
                                                          }
                                                          }
                                                          className="cursor-pointer"
-                                                    />    
+                                                    />     */}
+                                                        <Image 
+                                                            src={`${USAGE_PATH.PRODUCT_FACE}${product?.face_image}`} 
+                                                            alt={`${product?.face_image}`} 
+                                                            width={300} 
+                                                            height={300}  
+                                                            onClick={() => 
+                                                                {
+                                                                    router.push(`/user/product-preview/${product?.slug}`)
+                                                                }
+                                                            }
+                                                            className="cursor-pointer"
+                                                        /> 
                                                     <div 
                                                         className="hidden"
                                                     >
@@ -168,7 +181,7 @@ export default function PendingProduct()
                         }
                 </div>
                 
-                {  !isLoading && (data?.data?.product_advert?.product.length > 0) && <>
+                {  !isLoading && (data?.data?.product_advert?.noOfPages > 0) && <>
                         <div 
                             className="container px-2 mr-3 border-2 border-gray-200 flex justify-between items-center mb-5"
                         >
@@ -184,7 +197,7 @@ export default function PendingProduct()
 
             <div className="mt-14">
                 { 
-                    !isLoading && isRefetching && (data?.data?.product_advert?.product.length > 0) && 
+                    !isLoading && isRefetching && (data?.data?.product_advert?.noOfPages > 0) && 
                             <Pagination onClick={(data) => {
                                       setCurrentPage(data)
                                       setTimeout(() => {
@@ -203,7 +216,7 @@ export default function PendingProduct()
 
             <div className="mt-14">
                 { 
-                    !isLoading && !isRefetching && (data?.data?.product_advert?.product.length > 0) && 
+                    !isLoading && !isRefetching && (data?.data?.product_advert?.noOfPages > 0) && 
                             <Pagination onClick={(data) => {
                                       setCurrentPage(data)
                                       setTimeout(() => {

@@ -62,9 +62,14 @@ export default function HeaderNavigation()
 
   useEffect(() => 
   {
-     setFirstName(Session.getFName())
-     setSurname(Session.getSName())
-     setMember(Session.getUType())
+     if(!token)
+     {
+        setFirstName(Session.getFName())
+        setSurname(Session.getSName())
+        setMember(Session.getUType())
+     } else {
+        // Session.setSideType("")
+     }
   }, [])
 
   useEffect(() => 
@@ -237,19 +242,53 @@ export default function HeaderNavigation()
                 <nav 
                     className='flex md:grid md:grid-cols-12 pb-4 md:pb-2 justify-center'
                 >
-                    <Logo />         
+                    <Logo /> 
                     <div className='md:block hidden md:col-span-8'
                     >
-                        <SearchBox />
+                        { 
+                            ((Session.getSideType() === "member") || (Session.getSideType() === "dealer") || (Session.getSideType() === "admin") || (Session.getSideType() === "super-admin")) && <SearchBox />
+                        }
+
+                        { 
+                            Session.getSideType() === "" && <SearchBox />
+                        }
+
+                        { 
+                            (Session.getSideType() === "student") && <>
+                                <div 
+                                    className='bg-blue-500 px-10 py-4 rounded-lg w-full flex justify-center items-center'
+                                >
+                                    <h1 className='font-bold text-white text-2xl uppercase'>MACEOS ACADEMY</h1>
+                                </div>
+                            </>
+                        }
                     </div>
                     <RightSide />
                     <PostAdvert />
                 </nav>
              
               
-                <div className='w-full md:hidden pb-2 mb-2'
+                <div 
+                    className='w-full md:hidden pb-2 mb-2'
                 >        
-                    <SmallScreen />
+                    {/* <SmallScreen /> */}
+                    { 
+                            ((Session.getSideType() === "member") || (Session.getSideType() === "dealer") || (Session.getSideType() === "admin") || (Session.getSideType() === "super-admin")) && <SmallScreen />
+                        }
+
+                        { 
+                            Session.getSideType() === "" && <SmallScreen />
+                        }
+
+                        { 
+                            (Session.getSideType() === "student") && <>
+                                <div 
+                                    className='bg-blue-500 px-10 py-4 rounded-lg w-full flex justify-center items-center'
+                                >
+                                    <h1 className='font-bold text-white text-md uppercase'>MACEOS ACADEMY</h1>
+                                </div>
+                            </>
+                        }
                 </div>
 
 

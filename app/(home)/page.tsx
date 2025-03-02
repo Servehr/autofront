@@ -3,31 +3,32 @@
 import { useQuery } from '@tanstack/react-query'
 import Product from '../../components/Product'
 import { PuffLoader } from 'react-spinners'
+import Image from 'next/image'
 import MobileCategory from '../../components/category/MobileCategory'
 import WebCategory from '../../components/category/WebCategory'
 import Banner from '../../components/Banner'
 import SlideShow from '../../components/SlideShow'
 import { Landing } from '../api/home/market/AllProduct'
 import { useEffect, useState } from 'react'
-import useNetwork from '../hook/network'
+// import useNetwork from '../hook/network'
 
 export default function Home() 
 {
-    const isLive = useNetwork()
-    const [ran, setRan] = useState<number>()
-    const { isFetching, refetch, isLoading, ...data } = useQuery({ queryKey: ['landing-page'], queryFn: () => Landing(), refetchOnMount: true, refetchOnWindowFocus: true } )
+    // const isLive = useNetwork()
+    // const [ran, setRan] = useState<number>()
+    const { isFetching, refetch, isLoading, ...data } = useQuery({ queryKey: ['landing-page'], queryFn: () => Landing(), refetchOnWindowFocus: true } )
+
+    // useEffect(() => 
+    // {
+    //     if(isLive)
+    //     {
+    //         refetch()
+    //     }
+    // }, [isLive, ran])
 
     useEffect(() => 
     {
-        if(isLive)
-        {
-            refetch()
-        }
-    }, [isLive, ran])
-
-    useEffect(() => 
-    {
-        setRan((33*111*1984)*(Math.random()))
+        // setRan((33*111*1984)*(Math.random()))
     }, [])
     
     return (
@@ -65,9 +66,15 @@ export default function Home()
                         <div 
                             className='col-span-3 bg-red-200 md:block hidden border-shadow shadow-lg'
                         >
-                            <img 
+                            {/* <img 
                                 className=''
                                 src='/swap-car.png'
+                            /> */}
+                            <Image 
+                                src={`/swap-car.png`} 
+                                alt={`banner-two`} 
+                                width={400}
+                                height={200}
                             />
                         </div>
                     </div>
